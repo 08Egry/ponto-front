@@ -1,0 +1,60 @@
+{
+  "cadastro": [
+    {
+      "id": "8d5f",
+      "registro": "13:18:51- Chegada no trabalho - matricula"
+    },
+    {
+      "id": "a1a7",
+      "registro": "13:19:28- Chegada no trabalho - matricula"
+    },
+    {
+      "id": "b853",
+      "registro": "13:19:30- Saída para o almoço - matricula"
+    },
+    {
+      "id": "340a",
+      "registro": "13:19:32-Retorno do almoço - matricula"
+    },
+    {
+      "id": "141a",
+      "registro": "13:19:34- Saída - matricula"
+    },
+    {
+      "id": "5884",
+      "saidaRegistrada": true,
+      "retornoAlmocoRegistrada": true,
+      "saidaAlmocoRegistrada": true,
+      "chegadaRegistrada": true,
+      "registro": "",
+      "matricula": "",
+      "nome": ""
+    },
+    {
+      "id": "9e1b",
+      "registro": "11:33:35- Chegada no trabalho - matricula"
+    },
+    {
+      "id": "8363",
+      "registro": "11:33:38- Saída para o almoço - matricula"
+    },
+    {
+      "id": "6de1",
+      "registro": "11:33:41-Retorno do almoço - matricula"
+    },
+    {
+      "id": "f97f",
+      "registro": "11:33:45- Saída - matricula"
+    },
+    {
+      "id": "294f",
+      "saidaRegistrada": true,
+      "retornoAlmocoRegistrada": true,
+      "saidaAlmocoRegistrada": true,
+      "chegadaRegistrada": true,
+      "registro": "",
+      "matricula": "",
+      "nome": ""
+    }
+  ]
+}

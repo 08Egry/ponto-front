@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="container">
+        <label>Matricula</label>
+        
+        <label style="margin-left: 10%;">Nome do funcionario</label>
+        <form>
+            <input placeholder="00000000-000" [(ngModel)]="Cadastro.matricula" nome="nome"  class="formulario-cadastro" style="margin-left:0%">
+            <input placeholder="NOME"  nome="nome" [(ngModel)]="Cadastro.nome" class="formulario-cadastrro" style="margin-left: 5%;">
+                <button *ngIf="!chegadaRegistrada" mat-raised-button (click)="registrarChegada()" nome="chegada" color="primary" class="chegada"> Registrar Chegada</button>
+                <button *ngIf="chegadaRegistrada && !saidaAlmocoRegistrada" mat-raised-button (click)="registrarAlmoco()" nome="almoco" class="almoco" color="primary">Registrar saída para o Almoço</button>
+                <button *ngIf="saidaAlmocoRegistrada && !retornoAlmocoRegistrada" mat-raised-button (click)="registrarRetorno()" nome="retorno" color="primary" class="retorno">Registrar retorno do Almoço</button>
+                <button *ngIf="retornoAlmocoRegistrada && !saidaRegistrada" mat-raised-button (click)="registrarSaida()" nome="saida" class="saida" color="primary">Registrar saída</button>
+                <button mat-raised-button (click)="criarCadastro()" color="primary" style="margin-left: 3%;">
+                    Salvar
+                </button>
+                <button mat-raised-button (click)="Cancelar()" color="warn" class="cancelar">
+                    Cancelar
+                </button>
+        </form>    
+    </div>  
+    <br><br>
+    <div *ngIf="registros.length < 0">
+        <h2>Registros de Ponto:</h2>
+        <ul>
+            <li *ngFor="let registro of registros">{{ Cadastro }}</li>
+        </ul>
+    </div>
+</div>
+  

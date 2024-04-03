@@ -1,0 +1,60 @@
+<div class="mat-elevation-Z4">
+  <table mat-table class="full-width-table" matSort aria-label="Elements">
+  
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+      <td mat-cell *matCellDef="let row">{{row.id}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>nome</th>
+      <td mat-cell *matCellDef="let row">{{row.nome}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="matricula">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Matricula</th>
+      <td mat-cell *matCellDef="let row">{{row.matricula}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="RegistroChegada">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Chegada</th>
+      <td mat-cell *matCellDef="let row">{{row.entrada}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="RegistroAlmoco">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Almoço</th>
+      <td mat-cell *matCellDef="let row">{{row.intervalo}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="RegistroRetorno">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Retorno</th>
+      <td mat-cell *matCellDef="let row">{{row.retorno}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="RegistroSaida">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Saída</th>
+      <td mat-cell *matCellDef="let row">{{row.saida}}</td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator #paginator
+      [length]="dataSource.data.length"
+      [pageIndex]="0"
+      [pageSize]="10"
+      [pageSizeOptions]="[10, 25, 50]"
+      aria-label="Select page">
+  </mat-paginator>
+</div>
+<!-- registro-horario.component.html -->
+<div class="container">
+  <button (click)="registrarHorario()">Registrar Horário</button>
+  <div class="horario" *ngIf="horarioEntrada !== ''">
+    Horário de entrada: {{ horarioEntrada }} <br>
+    Horário de saída para o almoço: {{ horarioEntrada }} <br>
+    Horário de retorno do almoço: {{ horarioEntrada }} <br>
+    Horário de saída: {{ horarioEntrada }}
+  </div>
+</div>

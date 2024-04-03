@@ -1,0 +1,33 @@
+.cancelar{
+    margin-left:3%;
+}
+.registrar{
+    margin-left: 4%;
+}
+
+.chegada{
+    margin-left: 3%;
+}
+.almoco{
+    margin-left: 3%;
+
+}
+.retorno{
+    margin-left: 3%;
+}
+.saida{
+    margin-left: 3%;
+}
+label{
+    color:orangered;
+    font-weight: bold;
+}
+
+.formulario-cadastro{
+    width: 120px;
+    height: 12px;
+    max-height: 30%;
+    margin-left: 10%;
+    margin-top: auto;
+}
+
