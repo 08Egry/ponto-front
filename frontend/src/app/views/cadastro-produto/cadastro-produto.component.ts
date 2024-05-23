@@ -16,6 +16,10 @@ export class CadastroProdutoComponent implements OnInit {
   }
 
   verRegistro(): void {
-    this.router.navigate(['']);
+    this.router.navigate(['cadastro/pagina-usuario']);
+  }
+
+  registro(): void{
+    this.router.navigate(['cadastro/pagina-administrador']);
   }
 }

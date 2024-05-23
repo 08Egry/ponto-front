@@ -32,6 +32,10 @@ import { LerDadosTabelaComponent } from './components/cadastro/ler-dados-tabela/
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { RegistroComponent } from './components/cadastro/criar-cadastro/criar-cadastro.component';
+import { PaginaUsuarioComponent } from './views/pagina-usuario/pagina-usuario.component';
+import { PaginaAdministradorComponent } from './views/pagina-administrador/pagina-administrador.component';
+
+
 
 
 
@@ -47,6 +51,8 @@ import { RegistroComponent } from './components/cadastro/criar-cadastro/criar-ca
     ForDirective,
     LerDadosTabelaComponent,
     RegistroComponent,
+    PaginaUsuarioComponent,
+    PaginaAdministradorComponent
 
   ],
   imports: [
