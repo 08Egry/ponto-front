@@ -1,4 +1,4 @@
-import { CadastroService } from './../cadastro.service';
+import { RegistroService} from './../registro.service';
 import { Component, OnInit } from '@angular/core';
 import { Registro } from '../criar-cadastro/cadastro.model';
 
@@ -12,12 +12,13 @@ export class LerDadosCadastradoComponent implements OnInit {
 
   cadastro: Registro[] = [];
 
-  constructor(private cadastroService: CadastroService){}
+
+  constructor(private RegistroService: RegistroService){}
 
   ngOnInit(): void {
-    this.cadastroService.lerdados().subscribe(cadastro =>{
-      this.cadastro = cadastro
-      console.log(cadastro)
+    this.RegistroService.getRegistros().subscribe(registro =>{
+      this.cadastro = registro;
+      console.log(registro)
     })
       
   }

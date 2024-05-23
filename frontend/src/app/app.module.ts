@@ -19,7 +19,7 @@ import { HomeComponent } from './views/home/home.component';
 import { CadastroProdutoComponent } from './views/cadastro-produto/cadastro-produto.component';
 import { RedDirective } from './diretivas/red.directive';
 import { ForDirective } from './diretivas/for.directive';
-import { CriarCadastroComponent } from './components/cadastro/criar-cadastro/criar-cadastro.component';
+
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -31,6 +31,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { LerDadosTabelaComponent } from './components/cadastro/ler-dados-tabela/ler-dados-tabela.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { RegistroComponent } from './components/cadastro/criar-cadastro/criar-cadastro.component';
+
 
 
 @NgModule({
@@ -43,8 +45,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     CadastroProdutoComponent,
     RedDirective,
     ForDirective,
-    CriarCadastroComponent,
-    LerDadosTabelaComponent
+    LerDadosTabelaComponent,
+    RegistroComponent,
 
   ],
   imports: [

@@ -1,4 +1,4 @@
-import { CriarCadastroComponent } from './components/cadastro/criar-cadastro/criar-cadastro.component';
+import { RegistroComponent} from './components/cadastro/criar-cadastro/criar-cadastro.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -17,8 +17,17 @@ const routes: Routes = [
 },
 {
   path: "cadastro/criar-cadastro",
-  component: CriarCadastroComponent
+  component: RegistroComponent
+},
+{
+  path:"cadastro/pagina-usuario",
+  component: RegistroComponent
+},
+{ path: 'registro-de-ponto', 
+  component: RegistroComponent
 }
+
+
 ];
 
 @NgModule({

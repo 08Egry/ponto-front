@@ -1,12 +1,10 @@
-
-
-export interface Registro{
+export interface Registro {
     id?:number;
-    matricula:string;
-    nome:string;
-    registro?:string;
-    chegadaRegistrada:boolean;
-    saidaAlmocoRegistrada: boolean;
-    retornoAlmocoRegistrada:boolean;
-    saidaRegistrada:boolean;
-}
+    nome: string;
+    matricula: string;
+    horarioChegada?: string;
+    horarioAlmoco?: string;
+    horarioRetorno?: string;
+    horarioSaida?: string;
+  }
+  

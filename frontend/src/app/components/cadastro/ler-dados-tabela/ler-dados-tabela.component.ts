@@ -18,9 +18,7 @@ export class LerDadosTabelaComponent implements AfterViewInit {
   dataSource = new LerDadosTabelaDataSource();
 
   horarioEntrada:string='';
-
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'matricula','RegistroChegada','RegistroAlmoco','RegistroRetorno','RegistroSaida'];
+  displayedColumns = ['id', 'matricula','nome','horarioChegada'];
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
