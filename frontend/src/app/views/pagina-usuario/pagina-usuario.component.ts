@@ -9,20 +9,26 @@ import { RegistroService } from './../../components/cadastro/registro.service';
 })
 export class PaginaUsuarioComponent implements OnInit {
   registros: Registro[] = [];
+  nome: string= '';
+  email: string='';
 
   constructor(private registroService: RegistroService) {}
 
   ngOnInit(): void {
-    const nome = localStorage.getItem('nome');
-    if (nome) {
-      this.registroService.getRegistrosDoUsuario(nome).subscribe(
-        (data: Registro[]) => {
-          this.registros = data;
-        },
-        (error: any) => {
-          console.error('Erro ao buscar registros do usuário:', error);
-        }
-      );
-    }
+ 
+}
+criarUsuario(): void {
+  if (this.nome) {
+    this.registroService.criarUsuario(this.nome).subscribe(
+      () => {
+        console.log('Usuário criado com sucesso:');
+        this.registros.push(); 
+      },
+      (error: any) => {
+        console.error('Erro ao criar usuário:', error);
+      }
+    );
   }
+}
+
 }

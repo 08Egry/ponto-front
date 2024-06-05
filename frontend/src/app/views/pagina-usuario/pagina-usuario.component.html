@@ -1,19 +1,26 @@
 <div class="container">
-    <h2>Registros de Ponto</h2>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Matricula</th>
-                <th>Horario de chegada</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let registro of registros">
-                <td>{{ registro.nome }}</td>
-                <td>{{ registro.matricula }}</td>
-                <td>{{ registro.horarioChegada }}</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+    <h1>Cadastro de Usuário</h1>
+    <form (ngSubmit)="criarUsuario()">
+      <div class="form-group">
+        <label for="nome">Nome:</label>
+        <input id="nome" type="text" [(ngModel)]="nome" name="nome" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="nome">Email:</label>
+        <input id="nome" type="text" [(ngModel)]="nome" name="nome" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="nome">Senha:</label>
+        <input id="nome" type="text" [(ngModel)]="nome" name="nome" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Criar Usuário</button>
+    </form>
+  
+    <h2>Registros</h2>
+    <ul>
+      <li *ngFor="let registro of registros">
+        {{ registro.nome }} - {{ registro.email }} <!-- Ajuste conforme necessário -->
+      </li>
+    </ul>
+  </div>
+  

@@ -62,7 +62,7 @@ export class RegistroService {
 
   criarUsuario(nome: string): Observable<Usuario> {
     const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.getToken()}` });
-    return this.http.post<Usuario>(`${this.apiUrl}/criar-usuario`, { nome }, { headers });
+    return this.http.post<Usuario>(`${this.apiUrl}/autenticacao/criar-usuario`, { nome }, { headers });
     
   }
 

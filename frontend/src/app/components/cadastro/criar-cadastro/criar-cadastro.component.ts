@@ -30,7 +30,6 @@ export class RegistroComponent implements OnInit {
   }
 
   registrarPonto(tipo: string): void {
-    const funcionario: Registro = { nome: this.nome, matricula: this.matricula };
     this.registroService.registrarPonto(this.nome).subscribe(
       response => {
         switch (tipo) {

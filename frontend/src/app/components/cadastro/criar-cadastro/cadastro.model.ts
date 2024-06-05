@@ -1,4 +1,5 @@
 export interface Registro {
+email: any;
     id?:number;
     nome: string;
     matricula: string;
