@@ -1,24 +1,73 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Registro } from './criar-cadastro/cadastro.model';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, map } from 'rxjs';
+import { Registro, Usuario } from './criar-cadastro/cadastro.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegistroService {
-  private apiUrl = 'http://localhost:8080/api/funcionario'; 
+  private apiUrl = 'http://localhost:8080/api/funcionario';
+  private apiUrl2 = 'http://localhost:8080/api/login';
+  private token: string | null = null;
 
   constructor(private http: HttpClient) {}
 
-  registrarPonto(registro: Registro): Observable<Registro> {
-    return this.http.post<Registro>(`${this.apiUrl}/registrar-ponto`, registro);
+  login(nome: string, senha: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl2}/autenticacao/login`, { nome, senha })
+      .pipe(
+        map((response: { token: string; role: string }) => {
+          this.token = response.token;
+          localStorage.setItem('token', this.token);
+          localStorage.setItem('role', response.role);
+          localStorage.setItem('nome', nome); 
+          return response;
+        })
+      );
+  }
+
+  logout(): void {
+    this.token = null;
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    localStorage.removeItem('nome');
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem('token');
+  }
+
+  isLoggedIn(): boolean {
+    return !!this.getToken();
+  }
+
+  getPerfilUsuario(): string {
+    return localStorage.getItem('tipo') || '';
+  }
+
+  registrarPonto(nome: string): Observable<Registro> {
+    const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.getToken()}` });
+    return this.http.post<Registro>(`${this.apiUrl}/registrar-ponto`, { nome }, { headers });
   }
 
   getRegistros(): Observable<Registro[]> {
-    
-    return this.http.get<Registro[]>(`${this.apiUrl}/registros`);
+    const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.getToken()}` });
+    return this.http.get<Registro[]>(`${this.apiUrl}/registros`, { headers });
+  }
 
+  getRegistrosDoUsuario(nome: string): Observable<Registro[]> {
+    const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.getToken()}` });
+    return this.http.get<Registro[]>(`${this.apiUrl}/registros?nome=${nome}`, { headers });
+  }
+
+  criarUsuario(nome: string): Observable<Usuario> {
+    const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.getToken()}` });
+    return this.http.post<Usuario>(`${this.apiUrl}/criar-usuario`, { nome }, { headers });
+    
+  }
+
+  verRegistro(): Observable<any> {
+    const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.getToken()}` });
+    return this.http.get<any>(`${this.apiUrl2}/perfil`, { headers });
   }
 }

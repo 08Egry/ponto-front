@@ -8,6 +8,11 @@
       <label for="matricula">Matricula:</label>
       <input id="matricula" type="text" [(ngModel)]="matricula" class="form-control">
   </div>
+  <div *ngIf="tipo === 'ADMIN'" class="form-group">
+    <label for="matricula">Perfil:</label>
+    <input id="matricula" type="text" [(ngModel)]="matricula" class="form-control">
+</div>
+
   <div class="button-group">
       <button *ngIf="currentStep === 'chegada'" mat-raised-button (click)="registrarChegada()" color="primary" class="custom-button">
           Registrar Chegada

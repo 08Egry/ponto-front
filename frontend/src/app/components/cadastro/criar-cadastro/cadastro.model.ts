@@ -8,3 +8,8 @@ export interface Registro {
     horarioSaida?: string;
   }
   
+  export interface Usuario {
+    nome: string,
+    email: string,
+    senha: string
+  }

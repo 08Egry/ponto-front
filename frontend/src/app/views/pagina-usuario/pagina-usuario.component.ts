@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Registro } from 'src/app/components/cadastro/criar-cadastro/cadastro.model';
- import { RegistroService } from './../../components/cadastro/registro.service';
- 
-
+import { RegistroService } from './../../components/cadastro/registro.service';
 
 @Component({
   selector: 'app-pagina-usuario',
@@ -10,14 +8,21 @@ import { Registro } from 'src/app/components/cadastro/criar-cadastro/cadastro.mo
   styleUrls: ['./pagina-usuario.component.css']
 })
 export class PaginaUsuarioComponent implements OnInit {
+  registros: Registro[] = [];
 
-  registros: Registro[]=[];
-  
-  constructor(private registroService: RegistroService){}
+  constructor(private registroService: RegistroService) {}
 
   ngOnInit(): void {
-    this.registroService.getRegistros().subscribe(data => {
-      this.registros = data;
-    })};
-
+    const nome = localStorage.getItem('nome');
+    if (nome) {
+      this.registroService.getRegistrosDoUsuario(nome).subscribe(
+        (data: Registro[]) => {
+          this.registros = data;
+        },
+        (error: any) => {
+          console.error('Erro ao buscar registros do usuário:', error);
+        }
+      );
+    }
+  }
 }

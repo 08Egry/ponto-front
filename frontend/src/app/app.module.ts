@@ -23,7 +23,7 @@ import { ForDirective } from './diretivas/for.directive';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
@@ -34,6 +34,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { RegistroComponent } from './components/cadastro/criar-cadastro/criar-cadastro.component';
 import { PaginaUsuarioComponent } from './views/pagina-usuario/pagina-usuario.component';
 import { PaginaAdministradorComponent } from './views/pagina-administrador/pagina-administrador.component';
+import { LoginComponent } from './views/login/login.component';
+import { CadastroUsuarioComponent } from './views/cadastro-usuario/cadastro-usuario.component';
+
 
 
 
@@ -52,7 +55,9 @@ import { PaginaAdministradorComponent } from './views/pagina-administrador/pagin
     LerDadosTabelaComponent,
     RegistroComponent,
     PaginaUsuarioComponent,
-    PaginaAdministradorComponent
+    PaginaAdministradorComponent,
+    LoginComponent,
+    CadastroUsuarioComponent
 
   ],
   imports: [
@@ -71,8 +76,8 @@ import { PaginaAdministradorComponent } from './views/pagina-administrador/pagin
     MatInputModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
-  
+    MatSortModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
