@@ -9,6 +9,7 @@
 
 h2 {
   text-align: center;
+  color: #FF5900;
 }
 
 form div {
@@ -46,3 +47,15 @@ button:disabled {
   margin-top: 10px;
   text-align: center;
 }
+
+a {
+  color: #FF5900;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+

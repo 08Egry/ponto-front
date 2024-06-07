@@ -10,7 +10,7 @@
   }
   
   
-  h2 {
+  h1 {
     text-align: center;
     color: #FF4500; /* Dark grey */
     margin-bottom: 20px;
@@ -26,7 +26,8 @@
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    color: #495057; /* Medium grey */
+    color: #FF4500; /* Medium grey */
+
   }
   
   /* Estilo dos campos de entrada */

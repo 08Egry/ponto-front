@@ -8,30 +8,24 @@ import { Registro, Usuario } from './criar-cadastro/cadastro.model';
 })
 export class RegistroService {
   private apiUrl = 'http://localhost:8080/api/funcionario';
-  private apiUrl2 = 'http://localhost:8080/api/login';
-  private token: string | null = null;
+  private apiUrl2 = 'http://localhost:8080';
 
   constructor(private http: HttpClient) {}
 
-  login(nome: string, senha: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl2}/autenticacao/login`, { nome, senha })
-      .pipe(
-        map((response: { token: string; role: string }) => {
-          this.token = response.token;
-          localStorage.setItem('token', this.token);
-          localStorage.setItem('role', response.role);
-          localStorage.setItem('nome', nome); 
-          return response;
-        })
-      );
-  }
+  // login(nome: string, senha: string): Observable<any> {
+  //   return this.http.post<any>(`${this.apiUrl2}autenticacao/login`, { nome, senha })
+  //     .pipe(
+  //       map((response: { token: string; role: string }) => {
+  //         this.token = response.token;
+  //         localStorage.setItem('token', this.token);
+  //         localStorage.setItem('role', response.role);
+  //         localStorage.setItem('nome', nome); 
+  //         return response;
+  //       })
+  //     );
+  // }
 
-  logout(): void {
-    this.token = null;
-    localStorage.removeItem('token');
-    localStorage.removeItem('role');
-    localStorage.removeItem('nome');
-  }
+ 
 
   getToken(): string | null {
     return localStorage.getItem('token');

@@ -1,26 +1,27 @@
 <div class="container">
-
-<h1>Cadastro de Usuário</h1>
-
-<form (ngSubmit)="criarUsuario()" #cadastroForm="ngForm">
-  <div>
-    <label for="nome">Nome:</label>
-    <input type="text" id="nome" name="nome" required [(ngModel)]="usuario.nome">
+  <h1>Cadastro de Usuário</h1>
+  <form (ngSubmit)="Usuario()" #cadastroForm="ngForm">
+    <div>
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" required [(ngModel)]="nome" class="form-control">
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required [(ngModel)]="email" class="form-control">
+    </div>
+    <div>
+      <label for="senha">Senha:</label>
+      <input type="password" id="senha" name="senha" required [(ngModel)]="senha" class="form-control" >
+    </div>
+    <!-- <div *ngIf="tipo === 'ADMIN'" class="form-group"> -->
+    <div>  
+      <label for="perfil">Perfil:</label>
+      <input id="perfil" type="text" [(ngModel)]="perfil" class="form-control">
+    </div>
+    <br><br>
+    <button type="submit" (click)="Usuario()"  class="form-control">Cadastrar Usuário</button>
+    <div *ngIf="sucesso" class="sucesso">
+      <p>{{ sucesso }}</p>
   </div>
-  <div>
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required [(ngModel)]="usuario.email">
-  </div>
-
-  <div>
-    <label for="senha">Senha:</label>
-    <input type="password" id="senha" name="senha" required [(ngModel)]="usuario.senha">
-  </div>
-  <div>
-    <label for="senha">Repetir senha:</label>
-    <input type="password" id="senha" name="senha" required [(ngModel)]="usuario.senha">
-  </div>
-  <br><br>
-  <button type="submit">Criar Usuário</button>
-</form>
-<div>
+  </form>
+</div>

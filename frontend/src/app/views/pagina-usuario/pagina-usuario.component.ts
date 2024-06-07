@@ -15,8 +15,8 @@ export class PaginaUsuarioComponent implements OnInit {
   constructor(private registroService: RegistroService) {}
 
   ngOnInit(): void {
- 
-}
+    
+  }
 criarUsuario(): void {
   if (this.nome) {
     this.registroService.criarUsuario(this.nome).subscribe(

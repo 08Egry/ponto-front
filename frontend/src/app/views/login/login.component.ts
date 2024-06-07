@@ -1,3 +1,4 @@
+import { LoginService } from './../../components/cadastro/login.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private registroService: RegistroService
+    private LoginService: LoginService
   ) {
     this.loginForm = this.formBuilder.group({
       nome: ['', Validators.required],
@@ -31,7 +32,7 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     if (this.loginForm.valid) {
       const { nome, senha } = this.loginForm.value;
-      this.registroService.login(nome, senha).subscribe(
+      this.LoginService.login(nome, senha).subscribe(
         () => {
         
           this.router.navigate(['/pagina-administrador']);

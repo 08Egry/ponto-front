@@ -1,5 +1,4 @@
-import { Usuario } from './../../components/cadastro/criar-cadastro/cadastro.model';
-import { RegistroService } from 'src/app/components/cadastro/registro.service';
+import { LoginService } from './../../components/cadastro/login.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -8,25 +7,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./cadastro-usuario.component.css']
 })
 export class CadastroUsuarioComponent {
+  nome: string = '';
+  email: string = '';
+  senha: string = '';
+  perfil: string = '';
+  tipo: string = '';
+  sucesso?: string;
 
-    nome: string= '';
-    email:string= '';
-    senha: string= '';
-Usuario: any;
-usuario: any;
+  constructor(private loginService: LoginService) { }
 
-
-  constructor(private registroService: RegistroService) { }
-  
-
-  criarUsuario() {
-    const funcionario: Usuario = { nome: this.nome, email: this.email, senha: this.senha };
-    this.registroService.criarUsuario(this.nome).subscribe(
-      response => {
-        console.log('Usuário criado com sucesso:', response);
+  Usuario() {
+    this.loginService.criarUsuario(this.nome, this.email, this.senha, this.perfil).subscribe(
+      () => {
+        this.sucesso = `Cadastro realizado com sucesso`;
       },
       error => {
-        console.error('Erro ao criar usuário:', error);
+        console.error(`Erro ao registrar `, error);
       }
     );
   }

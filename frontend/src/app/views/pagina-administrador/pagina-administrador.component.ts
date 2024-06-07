@@ -29,7 +29,7 @@ export class PaginaAdministradorComponent implements OnInit {
     if (nome) {
       this.registroService.registrarPonto(nome).subscribe(
         (response: any) => {
-          this.ngOnInit(); // Atualiza a lista de registros após registrar o ponto
+          this.ngOnInit(); 
         },
         (error: any) => {
           console.error('Erro ao registrar ponto:', error);

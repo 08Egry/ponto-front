@@ -1,14 +1,14 @@
 <mat-card class="container" class="home mat-elevation-z3">
     <mat-card-title class="title">Bem vindo!</mat-card-title>
-    <mat-card-subtitle class="subtitle">Você está no sistema de gerencimento</mat-card-subtitle>
+    <mat-card-subtitle class="subtitle">Você está no sistema de gerencimento de ponto dos funcionários</mat-card-subtitle>
 </mat-card>
 
 <div class="login-container">
     <h2>Login</h2>
-    <form [formGroup]="loginForm" (ngSubmit)="entrar()">
+    <form [formGroup]="loginForm" (ngSubmit)="entrar()"  #cadastroForm="ngForm">
       <div>
         <label for="nome">Nome:</label>
-        <input id="nome" formControlName="nome" type="text" />
+        <input id="nome" formControlName="nome" type="text">
         <div *ngIf="loginForm.get('nome')?.invalid && loginForm.get('nome')?.touched">
           Nome é obrigatório.
         </div>
@@ -20,9 +20,9 @@
           Senha é obrigatória.
         </div>
       </div>
-      <button type="submit" [disabled]="loginForm.invalid">Login</button>
+      <button type="submit" [disabled]="loginForm.invalid"  routerLink="/cadastro" (click)="entrar()">Login</button>
       <br><br>
-      <button type="text" >Criar usuario</button>
+      <a href="/cadastrousuario" (click)="CriarUsuario()">Criar usuário</a>
       <div *ngIf="error" class="error-message">
         {{ error }}
       </div>

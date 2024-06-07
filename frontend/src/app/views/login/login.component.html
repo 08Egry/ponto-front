@@ -1,16 +1,16 @@
-<!-- <div class="login-container">
+<div class="login-container">
     <h2>Login</h2>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div>
         <label for="nome">Nome:</label>
-        <input id="nome" formControlName="nome" type="text" />
+        <input id="nome" formControlName="nome" type="text"  class="form-control">
         <div *ngIf="loginForm.get('nome')?.invalid && loginForm.get('nome')?.touched">
           Nome é obrigatório.
         </div>
       </div>
       <div>
         <label for="senha">Senha:</label>
-        <input id="senha" formControlName="senha" type="password" />
+        <input id="senha" formControlName="senha" type="password"  class="form-control">
         <div *ngIf="loginForm.get('senha')?.invalid && loginForm.get('senha')?.touched">
           Senha é obrigatória.
         </div>
@@ -21,4 +21,4 @@
       </div>
     </form>
   </div>
-   -->
+  

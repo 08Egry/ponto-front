@@ -7,7 +7,6 @@ import { HomeComponent } from './views/home/home.component';
 import {CadastroProdutoComponent} from './views/cadastro-produto/cadastro-produto.component';
 import { PaginaUsuarioComponent } from './views/pagina-usuario/pagina-usuario.component';
 import { PaginaAdministradorComponent } from './views/pagina-administrador/pagina-administrador.component';
-import { LoginComponent } from './views/login/login.component';
 import { CadastroUsuarioComponent } from './views/cadastro-usuario/cadastro-usuario.component';
 
 
@@ -32,17 +31,14 @@ const routes: Routes = [
   component: PaginaAdministradorComponent
 },
 {
-path: "cadastro/login",
-component: LoginComponent
-},
-{
   path:'', redirectTo: '/login', pathMatch:'full'
 },
 {
   path: "cadastro-usuario",
   component: CadastroUsuarioComponent
+},{
+  path:'**',redirectTo:'/cadastro-usuario',pathMatch:'full'
 }
-
 ];
 
 @NgModule({
