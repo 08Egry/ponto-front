@@ -14,11 +14,14 @@
       <input type="password" id="senha" name="senha" required [(ngModel)]="senha" class="form-control" >
     </div>
     <!-- <div *ngIf="tipo === 'ADMIN'" class="form-group"> -->
-    <div>  
-      <label for="perfil">Perfil:</label>
-      <input id="perfil" type="text" [(ngModel)]="perfil" class="form-control">
-    </div>
-    <br><br>
+      <div>
+        <label for="perfil">Perfil:</label>
+        <select id="perfil" [(ngModel)]="perfil" class="form-control">
+            <option value="Admninistrador">Administrador</option>
+            <option value="Usuario">Usuário</option>
+        </select>
+      </div>
+      <br><br>
     <button type="submit" (click)="Usuario()"  class="form-control">Cadastrar Usuário</button>
     <div *ngIf="sucesso" class="sucesso">
       <p>{{ sucesso }}</p>

@@ -10,7 +10,7 @@ export class CadastroUsuarioComponent {
   nome: string = '';
   email: string = '';
   senha: string = '';
-  perfil: string = '';
+  perfil: string = 'Usuario';
   tipo: string = '';
   sucesso?: string;
 
