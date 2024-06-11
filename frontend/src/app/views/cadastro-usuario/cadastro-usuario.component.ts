@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { LoginService } from './../../components/cadastro/login.service';
 import { Component } from '@angular/core';
 
@@ -13,8 +14,9 @@ export class CadastroUsuarioComponent {
   perfil: string = 'Usuario';
   tipo: string = '';
   sucesso?: string;
+  
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private router: Router) { }
 
   Usuario() {
     this.loginService.criarUsuario(this.nome, this.email, this.senha, this.perfil).subscribe(
@@ -25,5 +27,9 @@ export class CadastroUsuarioComponent {
         console.error(`Erro ao registrar `, error);
       }
     );
+  }
+
+  Voltar(){
+    this.router.navigate(['/'])
   }
 }

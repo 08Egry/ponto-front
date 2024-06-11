@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   nome: string='';
   senha: string='';
   LoginService: any;
+  role: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -41,7 +42,7 @@ export class HomeComponent implements OnInit {
             if (role === 'admin') {
               this.router.navigate(['/cadastro/pagina-administrador']);
             } else if (role === 'usuario') {
-              this.router.navigate(['/cadastro']);
+              this.router.navigate(['/cadastro/pagina-usuario']);
             } else {
               this.error = 'Perfil não reconhecido.';
             }
@@ -58,6 +59,10 @@ export class HomeComponent implements OnInit {
 
   CriarUsuario():void{
     this.router.navigate(['/cadastro-usuario']);
+  
+  }
 
-}
+  alterarSenha(): void{
+    this.router.navigate(['/cadastro-usuario'])
+  }
 }

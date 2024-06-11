@@ -1,5 +1,5 @@
 <mat-card class="container" class="home mat-elevation-z3">
-    <mat-card-title class="title">Bem vindo!</mat-card-title>
+    <mat-card-title class="title" style="margin: auto;">Bem vindo!</mat-card-title>
     <mat-card-subtitle class="subtitle">Você está no sistema de gerencimento de ponto dos funcionários</mat-card-subtitle>
 </mat-card>
 
@@ -22,7 +22,8 @@
       </div>
       <button type="submit" [disabled]="loginForm.invalid"  routerLink="/cadastro" (click)="entrar()">Login</button>
       <br><br>
-      <a href="/cadastrousuario" (click)="CriarUsuario()">Criar usuário</a>
+      <a href="/cadastrousuario" (click)="CriarUsuario()">Criar usuário</a> 
+      <a href="/cadastrousuario" (click)="alterarSenha()" style="margin-left:130px">Alterar Senha</a>
       <div *ngIf="error" class="error-message">
         {{ error }}
       </div>
