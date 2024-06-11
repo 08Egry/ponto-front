@@ -25,9 +25,29 @@ export class RegistroComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // this.AtualizarBotao();
     
     this.nome = localStorage.getItem('nome') || '';
   }
+
+  // AtualizarBotao():void{
+  //   const  tempoAlmoco = 10;
+  //   const tempoRetorno = 10;
+  //   const tempoSaida = 10;
+
+  //   setTimeout(() => {
+  //     this.currentStep = 'almoco';
+  //   }, tempoAlmoco);
+
+  //   setTimeout(() => {
+  //     this.currentStep = 'retorno';
+  //   }, tempoRetorno);
+
+  //   setTimeout(() => {
+  //     this.currentStep = 'saida';
+  //   }, tempoSaida);
+  // }
+
 
   registrarPonto(tipo: string): void {
     this.registroService.registrarPonto(this.nome).subscribe(
@@ -56,6 +76,8 @@ export class RegistroComponent implements OnInit {
   }
 
   updateStep(tipo: string): void {
+
+
     switch (tipo) {
       case 'chegada':
         this.currentStep = 'almoco';
