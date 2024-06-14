@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Registro } from 'src/app/components/cadastro/criar-cadastro/cadastro.model';
 import { RegistroService } from './../../components/cadastro/registro.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pagina-usuario',
@@ -12,7 +13,10 @@ export class PaginaUsuarioComponent implements OnInit {
   nome: string= '';
   email: string='';
 
-  constructor(private registroService: RegistroService) {}
+
+  constructor(private registroService: RegistroService,
+              private router: Router
+  ) {}
 
   ngOnInit(): void {
     
@@ -29,6 +33,14 @@ criarUsuario(): void {
       }
     );
   }
+}
+
+RegistrarPonto(): void {
+  this.router.navigate(['/cadastro/criar-cadastro']);
+}
+
+verRegistro(): void {
+  this.router.navigate(['/ver-ponto']);
 }
 
 }

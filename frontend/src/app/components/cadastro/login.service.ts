@@ -32,9 +32,9 @@ export class LoginService {
     localStorage.removeItem('nome');
   }
 
-  criarUsuario(nome: string, email: string, senha: string, perfil: string): Observable<Usuario> {
+  criarUsuario(nome: string, matricula:number, email: string, senha: string, perfil: string): Observable<Usuario> {
     const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.getToken()}` });
-    return this.http.post<Usuario>(`${this.apiUrl}autenticacao/criar-usuario`, { nome, email, senha, perfil }, { headers });
+    return this.http.post<Usuario>(`${this.apiUrl}autenticacao/criar-usuario`, { nome, matricula,  email, senha, perfil }, { headers });
   }
 
   verRegistro(): Observable<any> {

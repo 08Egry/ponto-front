@@ -11,6 +11,7 @@ email: any;
   
   export interface Usuario {
     nome: string,
+    matricula: number;
     email: string,
     senha: string,
     perfil: string;

@@ -1,0 +1,26 @@
+<div class="container">
+    <h2>Registros de Ponto</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Matricula</th>
+                <th>Horario de chegada</th>
+                <th>Horario de almoço</th>
+                <th>Horario de retorno</th>
+                <th>Horario de saída</th>
+            
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let registro of registros">
+                <td>{{ registro.nome }}</td>
+                <td>{{ registro.matricula }}</td>
+                <td>{{ registro.horarioChegada }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+ 

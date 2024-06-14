@@ -9,6 +9,7 @@ import { Component } from '@angular/core';
 })
 export class CadastroUsuarioComponent {
   nome: string = '';
+  matricula!: number;
   email: string = '';
   senha: string = '';
   perfil: string = 'Usuario';
@@ -19,7 +20,7 @@ export class CadastroUsuarioComponent {
   constructor(private loginService: LoginService, private router: Router) { }
 
   Usuario() {
-    this.loginService.criarUsuario(this.nome, this.email, this.senha, this.perfil).subscribe(
+    this.loginService.criarUsuario(this.nome, this.matricula, this.email, this.senha, this.perfil).subscribe(
       () => {
         this.sucesso = `Cadastro realizado com sucesso`;
       },

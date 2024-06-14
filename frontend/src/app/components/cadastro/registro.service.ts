@@ -7,7 +7,7 @@ import { Registro, Usuario } from './criar-cadastro/cadastro.model';
   providedIn: 'root'
 })
 export class RegistroService {
-  private apiUrl = 'http://localhost:8080/api/funcionario';
+  private apiUrl = 'http://localhost:8080/funcionario';
   private apiUrl2 = 'http://localhost:8080';
 
   constructor(private http: HttpClient) {}
