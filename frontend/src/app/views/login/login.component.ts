@@ -11,7 +11,7 @@ import { LoginService } from './../../components/cadastro/login.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   error: string = '';
-perfil: any;
+  perfil: any;
 
   constructor(
     private formBuilder: FormBuilder,
