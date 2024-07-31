@@ -13,16 +13,7 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   login(nome: string, senha: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}autenticacao/login`, { nome, senha })
-      .pipe(
-        map((response: { token: string; role: string }) => {
-          this.token = response.token;
-          localStorage.setItem('token', this.token);
-          localStorage.setItem('role', response.role);
-          localStorage.setItem('nome', nome);
-          return response;
-        })
-      );
+    return this.http.post(`${this.apiUrl}/autenticacao/login`, { nome, senha });
   }
 
   logout(): void {

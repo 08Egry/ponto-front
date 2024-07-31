@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegistroService } from '../registro.service';
-import { Registro } from './cadastro.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -9,7 +9,7 @@ import { Registro } from './cadastro.model';
 })
 export class RegistroComponent implements OnInit {
   nome: string = '';
-  matricula: string = '';
+  matricula?: string = '';
   sucesso?: string;
   horarioChegada?: string;
   horarioAlmoco?: string;
@@ -19,79 +19,113 @@ export class RegistroComponent implements OnInit {
 
   currentStep: string = 'chegada';
 
+  // Coordenadas do local de trabalho
+  NumLatitude: number = -1.4526628;
+  NumLongitude: number = -48.4889347;
+  maxDistancia: number = 100; // Distância máxima em metros
 
-  constructor(private registroService: RegistroService) {
+  constructor(private registroService: RegistroService, private router: Router) {
     this.registroService.getPerfilUsuario();
   }
 
   ngOnInit(): void {
-    // this.AtualizarBotao();
-    
     this.nome = localStorage.getItem('nome') || '';
+//this.currentStep = localStorage.getItem('currentStep') || 'chegada';
   }
-
-  // AtualizarBotao():void{
-  //   const  tempoAlmoco = 10;
-  //   const tempoRetorno = 10;
-  //   const tempoSaida = 10;
-
-  //   setTimeout(() => {
-  //     this.currentStep = 'almoco';
-  //   }, tempoAlmoco);
-
-  //   setTimeout(() => {
-  //     this.currentStep = 'retorno';
-  //   }, tempoRetorno);
-
-  //   setTimeout(() => {
-  //     this.currentStep = 'saida';
-  //   }, tempoSaida);
-  // }
-
 
   registrarPonto(tipo: string): void {
-    this.registroService.registrarPonto(this.nome).subscribe(
-      response => {
-        switch (tipo) {
-          case 'chegada':
-            this.horarioChegada = response.horarioChegada;
-            break;
-          case 'almoco':
-            this.horarioAlmoco = response.horarioAlmoco;
-            break;
-          case 'retorno':
-            this.horarioRetorno = response.horarioRetorno;
-            break;
-          case 'saida':
-            this.horarioSaida = response.horarioSaida;
-            break;
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          const userLatitude = position.coords.latitude;
+          const userLongitude = position.coords.longitude;
+          const distancia = this.calculateDistance(
+            this.NumLatitude, this.NumLongitude,
+            userLatitude, userLongitude
+          );
+
+          if (distancia >= this.maxDistancia) {
+            this.registroService.registrarPonto(this.nome).subscribe(
+              response => {
+                switch (tipo) {
+                  case 'chegada':
+                    this.horarioChegada = response.horarioChegada;
+                    break;
+                  case 'almoco':
+                    this.horarioAlmoco = response.horarioAlmoco;
+                    break;
+                  case 'retorno':
+                    this.horarioRetorno = response.horarioRetorno;
+                    break;
+                  case 'saida':
+                    this.horarioSaida = response.horarioSaida;
+                    break;
+                }
+                this.sucesso = `Registro de ${tipo} realizado com sucesso`;
+                this.hideCurrentButtonAndScheduleNext(tipo);
+              },
+              error => {
+                console.error(`Erro ao registrar ${tipo}`, error);
+              }
+            );
+          } else {
+            this.sucesso = 'Você não está no local de trabalho.';
+          }
+        },
+        error => {
+          console.error('Erro ao obter a localização', error);
+          this.sucesso = 'Não foi possível obter sua localização.';
         }
-        this.sucesso = `Registro de ${tipo} realizado com sucesso`;
-        this.updateStep(tipo);
-      },
-      error => {
-        console.error(`Erro ao registrar ${tipo}`, error);
-      }
-    );
+      );
+    } else {
+      this.sucesso = 'Geolocalização não é suportada pelo seu navegador.';
+    }
   }
 
-  updateStep(tipo: string): void {
+  hideCurrentButtonAndScheduleNext(tipo: string): void {
+    this.currentStep = ''; // Oculta o botão atual
 
+    let nextStep = '';
+    let delay = 0;
 
     switch (tipo) {
       case 'chegada':
-        this.currentStep = 'almoco';
+        nextStep = 'almoco';
+      //  delay = 10000; // 10 segundos
         break;
       case 'almoco':
-        this.currentStep = 'retorno';
+        nextStep = 'retorno';
+       // delay = 10000; // 10 segundos
         break;
       case 'retorno':
-        this.currentStep = 'saida';
+        nextStep = 'saida';
+       // delay = 10000; // 10 segundos
         break;
       case 'saida':
-        this.currentStep = 'completo';
+        nextStep = 'completo';
         break;
     }
+
+    setTimeout(() => {
+      this.currentStep = nextStep;
+      // localStorage.setItem('currentStep', this.currentStep);
+    }, delay);
+  }
+
+  calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
+    const R = 6371e3; // Raio da Terra em metros
+    const φ1 = lat1 * Math.PI / 180;
+    const φ2 = lat2 * Math.PI / 180;
+    const Δφ = (lat2 - lat1) * Math.PI / 180;
+    const Δλ = (lon2 - lon1) * Math.PI / 180;
+
+    const a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+              Math.cos(φ1) * Math.cos(φ2) *
+              Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    const distance = R * c; // Distância em metros
+    return distance;
   }
 
   registrarChegada(): void {
@@ -108,5 +142,9 @@ export class RegistroComponent implements OnInit {
 
   registrarSaida(): void {
     this.registrarPonto('saida');
+  }
+
+  Voltar(): void {
+    this.router.navigate(['/cadastro']);
   }
 }

@@ -37,6 +37,7 @@ import { PaginaAdministradorComponent } from './views/pagina-administrador/pagin
 import { LoginComponent } from './views/login/login.component';
 import { CadastroUsuarioComponent } from './views/cadastro-usuario/cadastro-usuario.component';
 import { VerPontoComponent } from './views/ver-ponto/ver-ponto.component';
+import { AlterarSenhaComponent } from './views/alterar-senha/alterar-senha.component';
 
 
 
@@ -59,7 +60,8 @@ import { VerPontoComponent } from './views/ver-ponto/ver-ponto.component';
     PaginaAdministradorComponent,
     LoginComponent,
     CadastroUsuarioComponent,
-    VerPontoComponent
+    VerPontoComponent,
+    AlterarSenhaComponent
 
   ],
   imports: [

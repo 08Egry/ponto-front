@@ -16,6 +16,7 @@ export class PaginaAdministradorComponent implements OnInit {
   ngOnInit(): void {
     this.registroService.getRegistros().subscribe(
       (data: Registro[]) => {
+        console.log('Registros recebidos:', data); 
         this.registros = data;
       },
       (error: any) => {
@@ -44,5 +45,27 @@ export class PaginaAdministradorComponent implements OnInit {
 
   registro(): void {
     this.router.navigate(['/pagina-administrador']);
+  }
+
+  excluirRegistro(id: number): void {
+    this.registroService.excluirRegistro(id).subscribe(
+      () => {
+        this.carregarRegistros(); 
+      },
+      (error: any) => {
+        console.error('Erro ao excluir registro:', error);
+      }
+    );
+  }
+
+  carregarRegistros(): void {
+    this.registroService.getRegistros().subscribe(
+      (data: Registro[]) => {
+        this.registros = data;
+      },
+      (error: any) => {
+        console.error('Erro ao buscar registros:', error);
+      }
+    );
   }
 }

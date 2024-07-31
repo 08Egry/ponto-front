@@ -1,32 +1,32 @@
-<mat-card class="container" class="home mat-elevation-z3">
-    <mat-card-title class="title" style="margin: auto;">Bem vindo!</mat-card-title>
-    <mat-card-subtitle class="subtitle">Você está no sistema de registro de ponto dos funcionários</mat-card-subtitle>
+<mat-card class="container home mat-elevation-z3">
+  <mat-card-title class="title" style="margin: auto;">Bem vindo!</mat-card-title>
+  <mat-card-subtitle class="subtitle">Você está no sistema de registro de ponto dos funcionários</mat-card-subtitle>
 </mat-card>
 
 <div class="login-container">
-    <h2>Login</h2>
-    <form [formGroup]="loginForm" (ngSubmit)="entrar()"  #cadastroForm="ngForm">
-      <div>
-        <label for="nome">Nome:</label>
-        <input id="nome" formControlName="nome" type="text">
-        <div *ngIf="loginForm.get('nome')?.invalid && loginForm.get('nome')?.touched">
-          Nome é obrigatório.
-        </div>
+  <h2>Login</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="entrar()">
+    <div>
+      <label for="nome">Nome:</label>
+      <input id="nome" formControlName="nome" type="text" class="form-control">
+      <div *ngIf="loginForm.get('nome')?.invalid && loginForm.get('nome')?.touched" class="text-danger">
+        Nome é obrigatório.
       </div>
-      <div>
-        <label for="senha">Senha:</label>
-        <input id="senha" formControlName="senha" type="password" />
-        <div *ngIf="loginForm.get('senha')?.invalid && loginForm.get('senha')?.touched">
-          Senha é obrigatória.
-        </div>
+    </div>
+    <div>
+      <label for="senha">Senha:</label>
+      <input id="senha" formControlName="senha" type="password" class="form-control">
+      <div *ngIf="loginForm.get('senha')?.invalid && loginForm.get('senha')?.touched" class="text-danger">
+        Senha é obrigatória.
       </div>
-      <button type="submit" [disabled]="loginForm.invalid"  routerLink="/cadastro" (click)="entrar()">Login</button>
-      <br><br>
-      <a href="/cadastrousuario" (click)="CriarUsuario()">Criar usuário</a> 
-      <a href="/cadastrousuario" (click)="alterarSenha()" style="margin-left:130px">Alterar Senha</a>
-      <div *ngIf="error" class="error-message">
-        {{ error }}
-      </div>
-    </form>
+    </div>
+    <button type="submit" (click)="entrar()" [disabled]="loginForm.invalid" class="form-control">Login</button>
+    <br><br>
+    <button type="button" (click)="CriarUsuario()" class="form-control">Criar usuário</button>
+    <br><br>
+    <button type="button" (click)="alterarSenha()" class="form-control">Alterar Senha</button>
+    <div *ngIf="error" class="error-message">
+      {{ error }}
+    </div>
+  </form>
 </div>
-  

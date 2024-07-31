@@ -2,8 +2,8 @@
   <h2>Login</h2>
   <form [formGroup]="loginForm" (ngSubmit)=" irParaApaginaEscolhida()">
     <div>
-      <label for="nome">matricula:</label>
-      <input id="nome" formControlName="nome" type="text"  class="form-control">
+      <label for="matricula">matricula</label>
+      <input id="matricula" formControlName="nome" type="text"  class="form-control">
       <div *ngIf="loginForm.get('nome')?.invalid && loginForm.get('nome')?.touched">
         Nome é obrigatório.
       </div>

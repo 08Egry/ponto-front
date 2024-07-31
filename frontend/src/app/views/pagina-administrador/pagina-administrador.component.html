@@ -1,14 +1,15 @@
 <div class="container">
-    <h2>Registros de Ponto</h2>
+    <h2>Registro de Ponto</h2>
     <table class="table table-striped">
         <thead>
             <tr>
                 <th>Nome</th>
                 <th>Matricula</th>
-                <th>Horario de chegada</th>
-                <th>Horario do almoço<th>
-                <th>Horario de retorno</th>
-                <th>Horario de saida</th>
+                <th>Data e hora de chegada</th>
+                <th>Data e hora do almoço</th>
+                <th>Data e hora de retorno</th>
+                <th>Data e hora de saida</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -18,11 +19,11 @@
                 <td>{{ registro.horarioChegada }}</td>
                 <td>{{ registro.horarioAlmoco }}</td>
                 <td>{{ registro.horarioRetorno }}</td>
-                <td>{{ registro.horarioSaida }} </td>
+                <td>{{ registro.horarioSaida }}</td>
+                <td>
+                    <button style="color: red;" (click)="excluirRegistro(registro.id)">Excluir</button>
+                </td>
             </tr>
         </tbody>
     </table>
 </div>
-
-
- 

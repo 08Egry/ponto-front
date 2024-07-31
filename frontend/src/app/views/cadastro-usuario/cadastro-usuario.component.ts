@@ -1,6 +1,6 @@
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from './../../components/cadastro/login.service';
-import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-cadastro-usuario',
@@ -13,9 +13,7 @@ export class CadastroUsuarioComponent {
   email: string = '';
   senha: string = '';
   perfil: string = 'Usuario';
-  tipo: string = '';
   sucesso?: string;
-  
 
   constructor(private loginService: LoginService, private router: Router) { }
 

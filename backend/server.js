@@ -27,7 +27,7 @@ server.use((req, res, next) => {
 server.use(router);
 
 // Iniciar o servidor
-const PORT = 3001;
+const PORT = 8080;
 server.listen(PORT, () => {
   console.log(`JSON Server está rodando em http://localhost:${PORT}`);
 });

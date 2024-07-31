@@ -7,6 +7,9 @@ import { Registro, Usuario } from './criar-cadastro/cadastro.model';
   providedIn: 'root'
 })
 export class RegistroService {
+  login(nome: any, senha: any) {
+    throw new Error('Method not implemented.');
+  }
   private apiUrl = 'http://localhost:8080/funcionario';
   private apiUrl2 = 'http://localhost:8080';
 
@@ -63,5 +66,9 @@ export class RegistroService {
   verRegistro(): Observable<any> {
     const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.getToken()}` });
     return this.http.get<any>(`${this.apiUrl2}/perfil`, { headers });
+  }
+
+  excluirRegistro(id: number): Observable<any> {
+    return this.http.delete<Usuario[]>(`${this.apiUrl}/${id}`);
   }
 }

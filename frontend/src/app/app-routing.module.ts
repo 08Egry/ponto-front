@@ -9,7 +9,7 @@ import { PaginaUsuarioComponent } from './views/pagina-usuario/pagina-usuario.co
 import { PaginaAdministradorComponent } from './views/pagina-administrador/pagina-administrador.component';
 import { CadastroUsuarioComponent } from './views/cadastro-usuario/cadastro-usuario.component';
 import { VerPontoComponent } from './views/ver-ponto/ver-ponto.component';
-import { LerDadosTabelaComponent } from './components/cadastro/ler-dados-tabela/ler-dados-tabela.component';
+import { AlterarSenhaComponent } from './views/alterar-senha/alterar-senha.component';
 
 
 const routes: Routes = [
@@ -39,6 +39,9 @@ const routes: Routes = [
   path: "cadastro-usuario",
   component: CadastroUsuarioComponent
 },{
+  path:'**',redirectTo:'/cadastro-usuario',pathMatch:'full'
+},
+{
   path:'**',redirectTo:'/cadastro-usuario',pathMatch:'full'
 },
 {

@@ -85,7 +85,6 @@ a:hover {
   text-align: center;
 }
 
-/* Responsivo */
 @media (max-width: 600px) {
   .container {
       margin: 10px;

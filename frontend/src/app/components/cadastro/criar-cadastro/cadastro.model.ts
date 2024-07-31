@@ -1,6 +1,5 @@
 export interface Registro {
-email: any;
-    id?:number;
+    id:number;
     nome: string;
     matricula: string;
     horarioChegada?: string;

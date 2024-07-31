@@ -1,0 +1,26 @@
+<div class="container">
+    <h1>Cadastro de Usuário</h1>
+    <form (ngSubmit)="AlterarSenha()" #cadastroForm="ngForm">
+      <div>
+        <label for="matricula">Matricula</label>
+        <input type="number" id="matricula" name="nome" required [(ngModel)]="matricula" class="form-control">
+      </div>
+  
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required [(ngModel)]="email" class="form-control">
+      </div>
+      <div>
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" required [(ngModel)]="senha" class="form-control" >
+      </div>
+        <br><br>
+      <button type="submit" (click)="AlterarSenha()"  class="form-control">Alterar Senha</button>
+      <br><br>
+      <button type="submit" (click)="Voltar()"  class="form-control">Voltar</button>
+      <div *ngIf="sucesso" class="sucesso">
+        <p>{{ sucesso }}</p>
+    </div>
+    </form>
+  </div>
+  

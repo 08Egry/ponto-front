@@ -10,6 +10,9 @@ import { RegistroService } from 'src/app/components/cadastro/registro.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+AlterarSenha() {
+throw new Error('Method not implemented.');
+}
   loginForm: FormGroup;
   error: string = '';
   nome: string='';
@@ -63,6 +66,6 @@ export class HomeComponent implements OnInit {
   }
 
   alterarSenha(): void{
-    this.router.navigate(['/cadastro-usuario'])
+    this.router.navigate(['/alterar-senha'])
   }
 }
