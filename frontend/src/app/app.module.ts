@@ -23,7 +23,7 @@ import { ForDirective } from './diretivas/for.directive';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { HttpClientModule } from '@angular/common/http';
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
@@ -38,6 +38,7 @@ import { LoginComponent } from './views/login/login.component';
 import { CadastroUsuarioComponent } from './views/cadastro-usuario/cadastro-usuario.component';
 import { VerPontoComponent } from './views/ver-ponto/ver-ponto.component';
 import { AlterarSenhaComponent } from './views/alterar-senha/alterar-senha.component';
+import { EditarRegistroComponent } from './editar-registro/editar-registro.component';
 
 
 
@@ -61,7 +62,8 @@ import { AlterarSenhaComponent } from './views/alterar-senha/alterar-senha.compo
     LoginComponent,
     CadastroUsuarioComponent,
     VerPontoComponent,
-    AlterarSenhaComponent
+    AlterarSenhaComponent,
+    EditarRegistroComponent
 
   ],
   imports: [

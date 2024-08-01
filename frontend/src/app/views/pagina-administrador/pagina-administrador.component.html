@@ -1,29 +1,47 @@
 <div class="container">
     <h2>Registro de Ponto</h2>
     <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Matricula</th>
-                <th>Data e hora de chegada</th>
-                <th>Data e hora do almoço</th>
-                <th>Data e hora de retorno</th>
-                <th>Data e hora de saida</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let registro of registros">
-                <td>{{ registro.nome }}</td>
-                <td>{{ registro.matricula }}</td>
-                <td>{{ registro.horarioChegada }}</td>
-                <td>{{ registro.horarioAlmoco }}</td>
-                <td>{{ registro.horarioRetorno }}</td>
-                <td>{{ registro.horarioSaida }}</td>
-                <td>
-                    <button style="color: red;" (click)="excluirRegistro(registro.id)">Excluir</button>
-                </td>
-            </tr>
-        </tbody>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Matricula</th>
+          <th>Data e hora de chegada</th>
+          <th>Data e hora do almoço</th>
+          <th>Data e hora de retorno</th>
+          <th>Data e hora de saída</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let registro of registros">
+          <td>{{ registro.nome }}</td>
+          <td>{{ registro.matricula }}</td>
+          <td>{{ registro.horarioChegada }}</td>
+          <td>{{ registro.horarioAlmoco }}</td>
+          <td>{{ registro.horarioRetorno }}</td>
+          <td>{{ registro.horarioSaida }}</td>
+          <td>
+            <button style="color: red;" (click)="mostrarJustificativa(registro.id)">Excluir</button>
+            <button style="color: blue;" (click)="editarRegistro(registro.id)">Editar</button>
+          </td>
+        </tr>
+      </tbody>
     </table>
+  
+    <div *ngIf="mostrarModalJustificativa" class="modal">
+        <div class="modal-content">
+          <span class="close" (click)="fecharModalJustificativa()">&times;</span>
+          <h2>Justificar Exclusão</h2>
+          <select [(ngModel)]="justificativa">
+            <option *ngFor="let justificativa of justificativas">{{ justificativa }}</option>
+          </select>
+          <button (click)="confirmarExclusao()">Confirmar</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="justificativaEdicao">Justificativa:</label>
+        <textarea id="justificativaEdicao" [(ngModel)]="justificarEdicao" class="form-control" rows="3"></textarea>
+      </div>
 </div>
+  

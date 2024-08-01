@@ -10,6 +10,8 @@ import { PaginaAdministradorComponent } from './views/pagina-administrador/pagin
 import { CadastroUsuarioComponent } from './views/cadastro-usuario/cadastro-usuario.component';
 import { VerPontoComponent } from './views/ver-ponto/ver-ponto.component';
 import { AlterarSenhaComponent } from './views/alterar-senha/alterar-senha.component';
+import { EditarRegistroComponent } from './editar-registro/editar-registro.component';
+
 
 
 const routes: Routes = [
@@ -32,6 +34,7 @@ const routes: Routes = [
 {path:"cadastro/pagina-administrador",
   component: PaginaAdministradorComponent
 },
+{ path: 'editar-registro/:id', component: EditarRegistroComponent },
 {
   path:'', redirectTo: '/login', pathMatch:'full'
 },

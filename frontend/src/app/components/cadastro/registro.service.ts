@@ -63,11 +63,19 @@ export class RegistroService {
     
   }
 
+  atualizarRegistro(registro: Registro): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/${registro.id}`, registro);
+  }
+
   verRegistro(): Observable<any> {
     const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.getToken()}` });
     return this.http.get<any>(`${this.apiUrl2}/perfil`, { headers });
   }
 
+  getRegistroById(id: number): Observable<Registro> {
+    return this.http.get<Registro>(`${this.apiUrl}/${id}`);
+  }
+ 
   excluirRegistro(id: number): Observable<any> {
     return this.http.delete<Usuario[]>(`${this.apiUrl}/${id}`);
   }

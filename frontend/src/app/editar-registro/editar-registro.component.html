@@ -1,0 +1,32 @@
+<div class="container">
+    <h2>Editar Registro de Ponto</h2>
+    <form (ngSubmit)="salvarEdicao()">
+      <div class="form-group">
+        <label for="nome">Nome:</label>
+        <input id="nome" type="text" [(ngModel)]="registro.nome" name="nome" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="matricula">Matrícula:</label>
+        <input id="matricula" type="text" [(ngModel)]="registro.matricula" name="matricula" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="horarioChegada">Data e hora de chegada:</label>
+        <input id="horarioChegada" type="datetime-local" [(ngModel)]="registro.horarioChegada" name="horarioChegada" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="horarioAlmoco">Data e hora do almoço:</label>
+        <input id="horarioAlmoco" type="datetime-local" [(ngModel)]="registro.horarioAlmoco" name="horarioAlmoco" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="horarioRetorno">Data e hora de retorno:</label>
+        <input id="horarioRetorno" type="datetime-local" [(ngModel)]="registro.horarioRetorno" name="horarioRetorno" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="horarioSaida">Data e hora de saída:</label>
+        <input id="horarioSaida" type="datetime-local" [(ngModel)]="registro.horarioSaida" name="horarioSaida" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary">Salvar</button>
+      <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+    </form>
+  </div>
+  
