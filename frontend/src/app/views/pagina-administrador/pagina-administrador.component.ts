@@ -19,6 +19,7 @@ export class PaginaAdministradorComponent implements OnInit {
   justificarEdicao: string= '';
   idRegistroParaExcluir: number | null = null;
   registroParaEditar: number | null = null;
+  sucesso!: string;
 
   constructor(private router: Router, private registroService: RegistroService) {}
 
@@ -58,14 +59,17 @@ export class PaginaAdministradorComponent implements OnInit {
     }
   }
 
-  confirmarEdicap(): void {
-    if (this.registroParaEditar !== null && this.justificarEdicao) {
-      console.log(`Justificativa para exclusão: ${this.justificarEdicao}`);
-      this.excluirRegistro(this.registroParaEditar);
-      this.fecharModalJustificativa();
-    } else {
-      alert('Por favor, selecione uma justificativa.');
-    }
+
+  excluirRegistro(id: number) {
+    this.registroService.excluirRegistro(id).subscribe(
+      ()=>{
+        this.carregarRegistros();
+        this.sucesso = "Dados excluido com sucesso";
+      },
+      (error: any)=>{
+        console.error('erro ao excluir registro', error);
+      }
+    )
   }
 
   mostrarJustificativaEdicao(registro: Registro): void {
@@ -78,13 +82,28 @@ export class PaginaAdministradorComponent implements OnInit {
     this.justificarEdicao = '';
     this.registroParaEditar = null;
   }
-
-
-  excluirRegistro(idRegistroParaExcluir: number) {
-    throw new Error('Method not implemented.');
+  editarRegistro(id: number) {
+    // this.registroService.atualizarRegistro(id).subscribe(
+    //   ()=>{
+    //     this.carregarRegistros();
+    //   },
+    //   (error:any)=>{
+    //     console.error('erro ao editar registro', error);
+    //   }
+    // )
+      this.router.navigate([`/editar-registro/${id}`]);
   }
 
-  editarRegistro(id: number): void {
-    this.router.navigate([`/editar-registro/${id}`]);
+  confirmarEdicao(): void {
+    if (this.registroParaEditar !== null && this.justificarEdicao) {
+      console.log(`Justificativa para exclusão: ${this.justificarEdicao}`);
+      this.editarRegistro(this.registroParaEditar);
+      this.fecharModalJustificativa();
+    } else {
+      alert('Por favor, selecione uma justificativa.');
+    }
   }
+
+
+  
 }

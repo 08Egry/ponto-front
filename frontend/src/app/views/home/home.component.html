@@ -20,11 +20,11 @@
         Senha é obrigatória.
       </div>
     </div>
-    <button type="submit" (click)="entrar()" [disabled]="loginForm.invalid" class="form-control">Login</button>
+    <button type="submit" (click)="entrar()" class="form-control" [disabled]="loginForm.invalid" class="form-control">Login</button>
     <br><br>
     <button type="button" (click)="CriarUsuario()" class="form-control">Criar usuário</button>
     <br><br>
-    <button type="button" (click)="alterarSenha()" class="form-control">Alterar Senha</button>
+    <button type="button"  (click)="alterarSenha()" class="form-control">Alterar Senha</button>
     <div *ngIf="error" class="error-message">
       {{ error }}
     </div>

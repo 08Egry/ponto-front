@@ -38,7 +38,7 @@ throw new Error('Method not implemented.');
       const nome = this.loginForm.get('nome')?.value;
       const senha = this.loginForm.get('senha')?.value;
       
-      this.LoginService.login(nome, senha).subscribe(
+      this.LoginService.login(this.nome, this.senha).subscribe(
         (response: any) => {
           if (response && response.token) {
             const role = this.loginService.getPerfilUsuario();
