@@ -34,7 +34,7 @@ export class EditarRegistroComponent implements OnInit {
   }
 
   salvarEdicao(): void {
-    this.registroService.atualizarRegistro(this.registro).subscribe(
+    this.registroService.atualizarRegistro(this.registro,this.id).subscribe(
       () => {
         this.router.navigate(['cadastro/pagina-administrador']);
         this.sucesso = 'Dados atualizados com sucesso';
@@ -44,6 +44,12 @@ export class EditarRegistroComponent implements OnInit {
       }
     );
   }
+  id(_registro: any, _id: any) {
+    this.registroService.atualizarRegistro(this.id,this.registro).subscribe(
+
+    )
+    }
+  
 
   cancelar(): void {
     this.router.navigate(['/cadastro/pagina-administrador']);

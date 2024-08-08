@@ -51,7 +51,7 @@ label {
 /* Estilo dos botões */
 .custom-button {
   display: block;         /* Torna o botão um elemento de bloco */
-  width: 100%;            /* Faz o botão ocupar toda a largura do seu contêiner */
+  width:100%;            /* Faz o botão ocupar toda a largura do seu contêiner */
   padding: 10px;
   margin-bottom: 10px;    /* Adiciona um espaço entre os botões */
   border: none;

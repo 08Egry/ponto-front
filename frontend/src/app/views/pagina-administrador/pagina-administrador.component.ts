@@ -83,6 +83,8 @@ export class PaginaAdministradorComponent implements OnInit {
     this.registroParaEditar = null;
   }
   editarRegistro(id: number) {
+
+    
     // this.registroService.atualizarRegistro(id).subscribe(
     //   ()=>{
     //     this.carregarRegistros();

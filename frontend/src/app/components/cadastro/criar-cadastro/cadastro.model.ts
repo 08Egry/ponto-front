@@ -9,8 +9,11 @@ export interface Registro {
   }
   
   export interface Usuario {
+    id: number;
     nome: string,
     matricula: number;
+    role: string;
+    token: string;
     email: string,
     senha: string,
     perfil: string;

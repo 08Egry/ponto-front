@@ -63,8 +63,12 @@ export class RegistroService {
     
   }
 
-  atualizarRegistro(registro: Registro): Observable<void> {
-    return this.http.put<void>(`${this.apiUrl2}/funcionario/atualizar-dados${registro.id}`, registro);
+  verificarPontoRegistrado(nome: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/verificar-ponto?nome=${nome}`);
+  }
+
+  atualizarRegistro(registro: any,  id: any): Observable<any> {
+    return this.http.put<Usuario>(`${this.apiUrl}/atualizar-dados${id}`,registro);
   }
 
   verRegistro(): Observable<any> {

@@ -1,59 +1,31 @@
-<!-- <div class="container">
+<!-- criar-cadastro.component.html -->
+<div class="container">
     <h2>Registrar de Ponto</h2>
-    <div class="form-group">
-        <label for="nome">Nome:</label>
-        <input id="nome" type="text" [(ngModel)]="nome" class="form-control">
+    <!-- <div class="form-group">
+      <label for="nome">Nome:</label>
+      <input id="nome" type="text" [(ngModel)]="nome" class="form-control">
     </div>
     <div class="form-group">
-        <label for="matricula">Matricula:</label>
-        <input id="matricula" type="text" [(ngModel)]="matricula" class="form-control">
-    </div>
-</div>
-<div class="button-group">
+      <label for="matricula">Matricula:</label>
+      <input id="matricula" type="text" [(ngModel)]="matricula" class="form-control">
+    </div> -->
+  </div>
+  <div class="button-group">
     <button *ngIf="currentStep === 'chegada'" mat-raised-button (click)="registrarChegada()" color="primary" class="custom-button">
-        Registrar Chegada
+      Registrar Chegada
     </button>
     <button *ngIf="currentStep === 'almoco'" mat-raised-button (click)="registrarAlmoco()" color="primary" class="custom-button">
-        Registrar Almoço
+      Registrar Almoço
     </button>
     <button *ngIf="currentStep === 'retorno'" mat-raised-button (click)="registrarRetorno()" color="primary" class="custom-button">
-        Registrar Retorno
+      Registrar Retorno
     </button>
     <button *ngIf="currentStep === 'saida'" mat-raised-button (click)="registrarSaida()" color="primary" class="custom-button">
-        Registrar Saída
+      Registrar Saída
     </button>
     <button (click)="Voltar()" color="primary" class="custom-button">Voltar</button>
-</div>
-<div *ngIf="sucesso" class="sucesso">
+  </div>
+  <div *ngIf="sucesso" class="sucesso">
     <p>{{ sucesso }}</p>
-</div>
- -->
- <div class="container">
-    <h2>Registrar de Ponto</h2>
-    <div class="form-group">
-        <label for="nome">Nome:</label>
-        <input id="nome" type="text" [(ngModel)]="nome" class="form-control">
-    </div>
-    <div class="form-group">
-        <label for="matricula">Matricula:</label>
-        <input id="matricula" type="text" [(ngModel)]="matricula" class="form-control">
-    </div>
-</div>
-<div class="button-group">
-    <button *ngIf="currentStep === 'chegada'" mat-raised-button (click)="registrarChegada()" color="primary" class="custom-button">
-        Registrar Chegada
-    </button>
-    <button *ngIf="currentStep === 'almoco'" mat-raised-button (click)="registrarAlmoco()" color="primary" class="custom-button">
-        Registrar Almoço
-    </button>
-    <button *ngIf="currentStep === 'retorno'" mat-raised-button (click)="registrarRetorno()" color="primary" class="custom-button">
-        Registrar Retorno
-    </button>
-    <button *ngIf="currentStep === 'saida'" mat-raised-button (click)="registrarSaida()" color="primary" class="custom-button">
-        Registrar Saída
-    </button>
-    <button (click)="Voltar()" color="primary" class="custom-button">Voltar</button>
-</div>
-<div *ngIf="sucesso" class="sucesso">
-    <p>{{ sucesso }}</p>
-</div>
+  </div>
+  

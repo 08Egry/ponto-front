@@ -50,6 +50,9 @@ const routes: Routes = [
 {
   path:"cadastro/ver-ponto",
   component: VerPontoComponent
+}, 
+{path:"alterar-senha",
+  component: AlterarSenhaComponent
 }
 ];
 

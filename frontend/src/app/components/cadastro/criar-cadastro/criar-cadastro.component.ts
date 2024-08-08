@@ -1,3 +1,4 @@
+// criar-cadastro.component.ts
 import { Component, OnInit } from '@angular/core';
 import { RegistroService } from '../registro.service';
 import { Router } from '@angular/router';
@@ -15,7 +16,7 @@ export class RegistroComponent implements OnInit {
   horarioAlmoco?: string;
   horarioRetorno?: string;
   horarioSaida?: string;
-  tipo: string = 'Admim'
+  tipo: string = 'Admim';
 
   currentStep: string = 'chegada';
 
@@ -30,7 +31,30 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit(): void {
     this.nome = localStorage.getItem('nome') || '';
-//this.currentStep = localStorage.getItem('currentStep') || 'chegada';
+    this.verificarRegistro();
+  }
+
+  verificarRegistro(): void {
+    this.registroService.verificarPontoRegistrado(this.nome).subscribe(
+      response => {
+        if (response.chegadaRegistrada) {
+          this.currentStep = 'almoco';
+        }
+        if (response.almocoRegistrado) {
+          this.currentStep = 'retorno';
+        }
+        if (response.retornoRegistrado) {
+          this.currentStep = 'saida';
+        }
+        if (response.saidaRegistrada) {
+          this.currentStep = 'completo';
+          this.sucesso = 'Todos os pontos já foram registrados.';
+        }
+      },
+      error => {
+        console.error('Erro ao verificar registro de ponto', error);
+      }
+    );
   }
 
   registrarPonto(tipo: string): void {
@@ -91,15 +115,12 @@ export class RegistroComponent implements OnInit {
     switch (tipo) {
       case 'chegada':
         nextStep = 'almoco';
-      //  delay = 10000; // 10 segundos
         break;
       case 'almoco':
         nextStep = 'retorno';
-       // delay = 10000; // 10 segundos
         break;
       case 'retorno':
         nextStep = 'saida';
-       // delay = 10000; // 10 segundos
         break;
       case 'saida':
         nextStep = 'completo';
@@ -108,7 +129,6 @@ export class RegistroComponent implements OnInit {
 
     setTimeout(() => {
       this.currentStep = nextStep;
-      // localStorage.setItem('currentStep', this.currentStep);
     }, delay);
   }
 

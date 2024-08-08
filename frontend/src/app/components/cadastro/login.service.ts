@@ -8,16 +8,16 @@ import { Usuario } from './criar-cadastro/cadastro.model';
 })
 export class LoginService {
   private apiUrl = 'http://localhost:8080/';
-  private token: string | null = null;
 
   constructor(private http: HttpClient) { }
 
   login(nome: string, senha: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/autenticacao/login`, { nome, senha });
+    const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.getToken()}` });
+    return this.http.post<Usuario>(`${this.apiUrl}autenticacao/login`, { nome, senha }, { headers });
   }
 
+
   logout(): void {
-    this.token = null;
     localStorage.removeItem('token');
     localStorage.removeItem('role');
     localStorage.removeItem('nome');
@@ -43,5 +43,10 @@ export class LoginService {
 
   getPerfilUsuario(): string {
     return localStorage.getItem('tipo') || '';
+  }
+
+  AlterarSenha(usuario:Usuario): Observable<Usuario>{
+    const headers = new HttpHeaders({'Autorization': `Bearen ${this.getToken()}`});
+    return this.http.put<Usuario>(`${this.apiUrl}autenticacao/atualizar-dados${usuario.matricula,usuario.email,usuario.senha}`,usuario);
   }
 }

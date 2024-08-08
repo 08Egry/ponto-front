@@ -27,18 +27,17 @@
         </tr>
       </tbody>
     </table>
-  
     <div *ngIf="mostrarModalJustificativa" class="modal">
-        <div class="modal-content">
-          <span class="close" (click)="fecharModalJustificativa()">&times;</span>
-          <h2>Justificar Exclusão</h2>
-          <select [(ngModel)]="justificativa">
-            <option *ngFor="let justificativa of justificativas">{{ justificativa }}</option>
-          </select>
-          <button (click)="confirmarExclusao()">Confirmar</button>
-        </div>
+      <div class="modal-content">
+        <span class="close" (click)="fecharModalJustificativa()">&times;</span>
+        <h2>Justificar Exclusão</h2>
+        <select [(ngModel)]="justificativa">
+          <option *ngFor="let justificativa of justificativas">{{ justificativa }}</option>
+        </select>
+        <button (click)="confirmarExclusao()">Confirmar</button>
       </div>
-
+    </div>
+    <div>
       <div class="form-group">
         <label for="justificativaEdicao">Justificativa:</label>
         <!-- <textarea id="justificativaEdicao" [(ngModel)]="justificarEdicao" class="form-control" rows="3"></textarea> -->

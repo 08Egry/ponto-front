@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { LoginService } from './../../components/cadastro/login.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,23 +9,33 @@ import { Component } from '@angular/core';
 })
 export class AlterarSenhaComponent {
 
+  usuario: any
   matricula: any;
   email: any;
   senha: any;
   sucesso: any;
-  
+  console: any;
 
-AlterarSenha() {
-throw new Error('Method not implemented.');
+  constructor(
+   private LoginService: LoginService,
+   private router: Router
+  ){}
+
+
+AlterarSenha(): void {
+  this.LoginService.AlterarSenha(this.usuario).subscribe(
+    ()=>{
+      this.console.log('Dados alterados com sucesso!');
+    }, 
+    (error: any)=>{
+      this.console.error('erro ao atualizar dados');
+    }
+  )
 }
+
 
 Voltar() {
-throw new Error('Method not implemented.');
-}
-
-
-Usuario() {
-throw new Error('Method not implemented.');
+  this.router.navigate(['/']);
 }
 
 }
