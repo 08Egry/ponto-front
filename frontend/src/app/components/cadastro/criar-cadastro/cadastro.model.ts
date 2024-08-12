@@ -18,3 +18,8 @@ export interface Registro {
     senha: string,
     perfil: string;
   }
+
+  export interface Login{
+    nome: string;
+    senha: string;
+  }

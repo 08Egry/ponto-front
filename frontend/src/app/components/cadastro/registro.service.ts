@@ -7,27 +7,11 @@ import { Registro, Usuario } from './criar-cadastro/cadastro.model';
   providedIn: 'root'
 })
 export class RegistroService {
-  login(nome: any, senha: any) {
-    throw new Error('Method not implemented.');
-  }
-  private apiUrl = 'http://localhost:8080/funcionario';
-  private apiUrl2 = 'http://localhost:8080';
+ 
+  private apiUrl = 'http://localhost:8080';
+  
 
   constructor(private http: HttpClient) {}
-
-  // login(nome: string, senha: string): Observable<any> {
-  //   return this.http.post<any>(`${this.apiUrl2}autenticacao/login`, { nome, senha })
-  //     .pipe(
-  //       map((response: { token: string; role: string }) => {
-  //         this.token = response.token;
-  //         localStorage.setItem('token', this.token);
-  //         localStorage.setItem('role', response.role);
-  //         localStorage.setItem('nome', nome); 
-  //         return response;
-  //       })
-  //     );
-  // }
-
  
 
   getToken(): string | null {
@@ -44,12 +28,12 @@ export class RegistroService {
 
   registrarPonto(nome: string): Observable<Registro> {
     const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.getToken()}` });
-    return this.http.post<Registro>(`${this.apiUrl}/registrar-ponto`, { nome }, { headers });
+    return this.http.post<Registro>(`${this.apiUrl}/funcionario/registrar-ponto`, { nome }, { headers });
   }
 
   getRegistros(): Observable<Registro[]> {
     const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.getToken()}` });
-    return this.http.get<Registro[]>(`${this.apiUrl}/registros`, { headers });
+    return this.http.get<Registro[]>(`${this.apiUrl}/funcionario/registros`, { headers });
   }
 
   getRegistrosDoUsuario(nome: string): Observable<Registro[]> {
@@ -67,13 +51,13 @@ export class RegistroService {
     return this.http.get<any>(`${this.apiUrl}/verificar-ponto?nome=${nome}`);
   }
 
-  atualizarRegistro(registro: any,  id: any): Observable<any> {
-    return this.http.put<Usuario>(`${this.apiUrl}/atualizar-dados${id}`,registro);
+  atualizarRegistro(registro: any, id: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/funcionario/atualizar-dados/${id}`, registro);
   }
 
   verRegistro(): Observable<any> {
     const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.getToken()}` });
-    return this.http.get<any>(`${this.apiUrl2}/perfil`, { headers });
+    return this.http.get<any>(`${this.apiUrl}/perfil`, { headers });
   }
 
   getRegistroById(id: number): Observable<Registro> {

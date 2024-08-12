@@ -105,7 +105,4 @@ export class PaginaAdministradorComponent implements OnInit {
       alert('Por favor, selecione uma justificativa.');
     }
   }
-
-
-  
 }

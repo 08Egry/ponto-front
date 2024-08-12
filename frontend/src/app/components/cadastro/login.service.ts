@@ -11,10 +11,14 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  login(nome: string, senha: string): Observable<any> {
+  login(nome: string, password: string): Observable<Usuario> {
+    const body = { nome, password };
+    // Caso precise de headers:
     const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.getToken()}` });
-    return this.http.post<Usuario>(`${this.apiUrl}autenticacao/login`, { nome, senha }, { headers });
+  
+    return this.http.post<Usuario>(`${this.apiUrl}autenticacao/login`, body);
   }
+  
 
 
   logout(): void {

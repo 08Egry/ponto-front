@@ -34,7 +34,7 @@ export class EditarRegistroComponent implements OnInit {
   }
 
   salvarEdicao(): void {
-    this.registroService.atualizarRegistro(this.registro,this.id).subscribe(
+    this.registroService.atualizarRegistro(this.registro, this.id).subscribe(
       () => {
         this.router.navigate(['cadastro/pagina-administrador']);
         this.sucesso = 'Dados atualizados com sucesso';
@@ -44,12 +44,17 @@ export class EditarRegistroComponent implements OnInit {
       }
     );
   }
-  id(_registro: any, _id: any) {
-    this.registroService.atualizarRegistro(this.id,this.registro).subscribe(
 
-    )
-    }
-  
+  id(_registro: any, _id: any): void {
+    this.registroService.atualizarRegistro(_registro, _id).subscribe(
+      () => {
+        console.log('Registro atualizado com sucesso');
+      },
+      (error: any) => {
+        console.error('Erro ao atualizar registro:', error);
+      }
+    );
+  }
 
   cancelar(): void {
     this.router.navigate(['/cadastro/pagina-administrador']);
