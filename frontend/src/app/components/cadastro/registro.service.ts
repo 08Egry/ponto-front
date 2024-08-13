@@ -65,6 +65,6 @@ export class RegistroService {
   }
  
   excluirRegistro(id: number): Observable<any> {
-    return this.http.delete<Usuario[]>(`${this.apiUrl}/${id}`);
+    return this.http.delete<Usuario[]>(`${this.apiUrl}/funcionario/${id}`);
   }
 }

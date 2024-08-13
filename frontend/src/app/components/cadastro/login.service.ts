@@ -7,16 +7,15 @@ import { Usuario } from './criar-cadastro/cadastro.model';
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl = 'http://localhost:8080/';
+  private apiUrl = 'http://localhost:8080';
 
   constructor(private http: HttpClient) { }
 
   login(nome: string, password: string): Observable<Usuario> {
     const body = { nome, password };
-    // Caso precise de headers:
     const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.getToken()}` });
   
-    return this.http.post<Usuario>(`${this.apiUrl}autenticacao/login`, body);
+    return this.http.post<Usuario>(`${this.apiUrl}/autenticacao/login`, body, {headers});
   }
   
 
@@ -29,7 +28,7 @@ export class LoginService {
 
   criarUsuario(nome: string, matricula:number, email: string, senha: string, perfil: string): Observable<Usuario> {
     const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.getToken()}` });
-    return this.http.post<Usuario>(`${this.apiUrl}autenticacao/criar-usuario`, { nome, matricula,  email, senha, perfil }, { headers });
+    return this.http.post<Usuario>(`${this.apiUrl}/autenticacao/criar-usuario`, { nome, matricula,  email, senha, perfil }, { headers });
   }
 
   verRegistro(): Observable<any> {

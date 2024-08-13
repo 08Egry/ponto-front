@@ -1,4 +1,5 @@
 export interface Registro {
+    selecionado?:string;
     id:number;
     nome: string;
     matricula: string;

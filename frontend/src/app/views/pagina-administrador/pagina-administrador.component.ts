@@ -12,11 +12,10 @@ export class PaginaAdministradorComponent implements OnInit {
   registros: Registro[] = [];
   mostrarModalJustificativa: boolean = false;
   mostrarModalJustificativaEdicao: boolean = false;
-  
-  justificativas : string[] = ['errp','ausencia','outro'];
-  justiEdicao: string[] = ['com','mat','outros'];
+  justificativas: string[] = ['Erro', 'Ausência', 'Outros'];
+  justiEdicao: string[] = ['com', 'mat', 'outros'];
   justificativa: string = '';
-  justificarEdicao: string= '';
+  justificarEdicao: string = '';
   idRegistroParaExcluir: number | null = null;
   registroParaEditar: number | null = null;
   sucesso!: string;
@@ -59,21 +58,21 @@ export class PaginaAdministradorComponent implements OnInit {
     }
   }
 
-
-  excluirRegistro(id: number) {
+  excluirRegistro(id: number): void {
     this.registroService.excluirRegistro(id).subscribe(
-      ()=>{
+      () => {
         this.carregarRegistros();
-        this.sucesso = "Dados excluido com sucesso";
+        this.sucesso =` Dados ${id} excluído com sucesso`;
       },
-      (error: any)=>{
-        console.error('erro ao excluir registro', error);
+      (error: any) => {
+        console.error('Erro ao excluir registro', error);
+        this.sucesso = `erro ao tentar excluir ${id}`
       }
-    )
+    );
   }
 
   mostrarJustificativaEdicao(registro: Registro): void {
-    this.registroParaEditar ;
+    this.registroParaEditar = registro.id;
     this.mostrarModalJustificativaEdicao = true;
   }
 
@@ -82,27 +81,30 @@ export class PaginaAdministradorComponent implements OnInit {
     this.justificarEdicao = '';
     this.registroParaEditar = null;
   }
-  editarRegistro(id: number) {
 
-    
-    // this.registroService.atualizarRegistro(id).subscribe(
-    //   ()=>{
-    //     this.carregarRegistros();
-    //   },
-    //   (error:any)=>{
-    //     console.error('erro ao editar registro', error);
-    //   }
-    // )
-      this.router.navigate([`/editar-registro/${id}`]);
+  editarRegistro(id: number): void {
+    this.router.navigate([`/editar-registro/${id}`]);
   }
 
   confirmarEdicao(): void {
     if (this.registroParaEditar !== null && this.justificarEdicao) {
-      console.log(`Justificativa para exclusão: ${this.justificarEdicao}`);
+      console.log(`Justificativa para edição: ${this.justificarEdicao}`);
       this.editarRegistro(this.registroParaEditar);
-      this.fecharModalJustificativa();
+      this.fecharModalJustificativaEdicao();
     } else {
       alert('Por favor, selecione uma justificativa.');
+    }
+  }
+
+  excluirSelecionados(): void {
+    const registrosParaExcluir = this.registros.filter(registro => registro.selecionado);
+
+    if (registrosParaExcluir.length > 0) {
+      registrosParaExcluir.forEach(registro => {
+        this.excluirRegistro(registro.id);
+      });
+    } else {
+      alert('Por favor, selecione pelo menos um registro para excluir.');
     }
   }
 }
