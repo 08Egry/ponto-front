@@ -2,15 +2,9 @@
 .table-header {
   background-color:  #FF4500;;
   color: white;
-  border: 20px solid  #FF4500;;
-  margin-inline: 10%;
-  padding: 3px;
-
+  border: 1px solid  #FF4500;;
+  padding: 8px;
   text-align: left;
-  margin-right: 10px;
-  margin-block-end: 10%;
-  white-space: 10%;
-  gap: 20%;
 }
 
 /* Estilo para o botão de justificativa */
