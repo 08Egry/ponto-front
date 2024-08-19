@@ -1,4 +1,8 @@
 export interface Registro {
+  saidaRegistrafa: string;
+  retornoRegistrada: string;
+    almocoRegistrado: string;
+    chegadaRegistrada: string;
     selecionado?:string;
     id:number;
     nome: string;

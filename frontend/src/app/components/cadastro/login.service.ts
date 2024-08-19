@@ -3,19 +3,20 @@ import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { Usuario } from './criar-cadastro/cadastro.model';
 
+
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class LoginService  {
   private apiUrl = 'http://localhost:8080';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+){ }
 
-  login(nome: string, password: string): Observable<Usuario> {
-    const body = { nome, password };
+  login(nome: string, password: string): Promise<Usuario |undefined> {
     const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.getToken()}` });
   
-    return this.http.post<Usuario>(`${this.apiUrl}/autenticacao/login`, body, {headers});
+    return this.http.post<Usuario>(`${this.apiUrl}/autenticacao/login`, {nome, password}, {headers}).toPromise();
   }
   
 
@@ -26,9 +27,9 @@ export class LoginService {
     localStorage.removeItem('nome');
   }
 
-  criarUsuario(nome: string, matricula:number, email: string, senha: string, perfil: string): Observable<Usuario> {
+  criarUsuario(nome: string, matricula:number, email: string, senha: string, perfil: string):Promise<Usuario | undefined> {
     const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.getToken()}` });
-    return this.http.post<Usuario>(`${this.apiUrl}/autenticacao/criar-usuario`, { nome, matricula,  email, senha, perfil }, { headers });
+    return this.http.post<Usuario>(`${this.apiUrl}/autenticacao/criar-usuario`, { nome, matricula,  email, senha, perfil }, { headers }).toPromise();
   }
 
   verRegistro(): Observable<any> {

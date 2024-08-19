@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class RegistroComponent implements OnInit {
   nome: string = '';
-  matricula?: string = '';
+  matricula: string = '';
   sucesso?: string;
   horarioChegada?: string;
   horarioAlmoco?: string;
@@ -23,7 +23,7 @@ export class RegistroComponent implements OnInit {
   // Coordenadas do local de trabalho
   NumLatitude: number = -1.4526628;
   NumLongitude: number = -48.4889347;
-  maxDistancia: number = 100; // Distância máxima em metros
+  raioMaximo: number = 15; // Distância máxima em metros
 
   constructor(private registroService: RegistroService, private router: Router) {
     this.registroService.getPerfilUsuario();
@@ -43,10 +43,10 @@ export class RegistroComponent implements OnInit {
         if (response.almocoRegistrado) {
           this.currentStep = 'retorno';
         }
-        if (response.retornoRegistrado) {
+        if (response.saidaRegistrafa) {
           this.currentStep = 'saida';
         }
-        if (response.saidaRegistrada) {
+        if (response.chegadaRegistrada) {
           this.currentStep = 'completo';
           this.sucesso = 'Todos os pontos já foram registrados.';
         }
@@ -68,8 +68,8 @@ export class RegistroComponent implements OnInit {
             userLatitude, userLongitude
           );
 
-          if (distancia >= this.maxDistancia) {
-            this.registroService.registrarPonto(this.nome).subscribe(
+          if (distancia >= this.raioMaximo) {
+            this.registroService.registrarPonto(this.nome,this.matricula).subscribe(
               response => {
                 switch (tipo) {
                   case 'chegada':

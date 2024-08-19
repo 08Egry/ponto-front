@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   loginForm: FormGroup;
   error: string = '';
   nome: string = '';
-  senha: string = '';
+  password: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,10 +28,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {}
 
   entrar() {
-      const nome = this.loginForm.get('nome')?.value;
-      const senha = this.loginForm.get('senha')?.value;
-
-      this.loginService.login(nome, senha).subscribe(
+    this.loginService.login(this.nome, this.password).then(
         (response: any) => {
           if (response && response.token) {
             localStorage.setItem('token', response.token);

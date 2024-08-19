@@ -62,7 +62,7 @@ export class PaginaAdministradorComponent implements OnInit {
     this.registroService.excluirRegistro(id).subscribe(
       () => {
         this.carregarRegistros();
-        this.sucesso =` Dados ${id} excluído com sucesso`;
+        this.sucesso =` Registro ${id} excluído com sucesso`;
       },
       (error: any) => {
         console.error('Erro ao excluir registro', error);

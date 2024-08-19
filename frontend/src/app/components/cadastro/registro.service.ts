@@ -26,9 +26,9 @@ export class RegistroService {
     return localStorage.getItem('tipo') || '';
   }
 
-  registrarPonto(nome: string): Observable<Registro> {
+  registrarPonto(nome: string, matricula: string): Observable<Registro> {
     const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.getToken()}` });
-    return this.http.post<Registro>(`${this.apiUrl}/funcionario/registrar-ponto`, { nome }, { headers });
+    return this.http.post<Registro>(`${this.apiUrl}/funcionario/registrar-ponto`, { nome, matricula }, { headers });
   }
 
   getRegistros(): Observable<Registro[]> {
@@ -47,12 +47,12 @@ export class RegistroService {
     
   }
 
-  verificarPontoRegistrado(nome: string): Observable<any> {
+  verificarPontoRegistrado(nome: string): Observable<Registro> {
     return this.http.get<any>(`${this.apiUrl}/verificar-ponto?nome=${nome}`);
   }
 
-  atualizarRegistro(registro: any, id: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/funcionario/atualizar-dados/${id}`, registro);
+  atualizarRegistro(registro: any, id: any): Promise<Registro | undefined> {
+    return this.http.put<any>(`${this.apiUrl}/funcionario/atualizar-dados/${id}`, registro).toPromise();
   }
 
   verRegistro(): Observable<any> {

@@ -18,7 +18,7 @@ export class CadastroUsuarioComponent {
   constructor(private loginService: LoginService, private router: Router) { }
 
   Usuario() {
-    this.loginService.criarUsuario(this.nome, this.matricula, this.email, this.senha, this.perfil).subscribe(
+    this.loginService.criarUsuario(this.nome, this.matricula, this.email, this.senha, this.perfil).then(
       () => {
         this.sucesso = `Cadastro realizado com sucesso`;
       },

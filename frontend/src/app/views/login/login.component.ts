@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   irParaApaginaEscolhida(): void {
     if (this.loginForm.valid) {
       const { nome, senha } = this.loginForm.value;
-      this.loginService.login(nome, senha).subscribe(
+      this.loginService.login(nome, senha).then(
         (response: any) => {
           const perfil = response.perfil; 
           this.direcionarPagina(perfil);
