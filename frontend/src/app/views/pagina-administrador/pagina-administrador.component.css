@@ -6,6 +6,10 @@
   padding: 8px;
   text-align: left;
 }
+.h2{
+  justify-items: center;
+  color:#FF4500
+}
 
 /* Estilo para o botão de justificativa */
 .btn-justificativa {

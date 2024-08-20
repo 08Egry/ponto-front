@@ -1,5 +1,5 @@
 export interface Registro {
-  saidaRegistrafa: string;
+  saidaRegistrada: string;
   retornoRegistrada: string;
     almocoRegistrado: string;
     chegadaRegistrada: string;

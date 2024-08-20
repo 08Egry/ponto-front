@@ -1,35 +1,38 @@
 <div class="container">
-  <h2>Registro de Ponto</h2>
- 
-  <table class="table table-striped" >
+  <h2 style="color: #FF4500; margin-left: 10px; font-family: 'Arial', sans-serif;">Registro de Ponto</h2>
+
+  <table class="table table-striped" style="border-spacing: 14px; width: 100%;">
     <thead>
-      <tr>
-        <th class="table-header"></th>
-        <th class="table-header">Nome</th>
-        <th class="table-header">Matrícula</th>
-        <th class="table-header">Data e hora de Chegada</th>
-        <th class="table-header">Data e hora do Almoço</th>
-        <th class="table-header">Data e hora de Retorno</th>
-        <th class="table-header">Data e hora de Saída</th>
-        <th class="table-header">Ações</th>
+      <tr style="background-color: #f8f8f8; color: #333;">
+        <th class="table-header" style="padding: 10px; text-align: center;"></th>
+        <th class="table-header" style="padding: 10px; text-align: left; font-family: 'Verdana', sans-serif;">Nome</th>
+        <th class="table-header" style="padding: 10px; text-align: left; font-family: 'Verdana', sans-serif;">Matrícula</th>
+        <th class="table-header" style="padding: 10px; text-align: left; font-family: 'Verdana', sans-serif;">Data e hora de Chegada</th>
+        <th class="table-header" style="padding: 10px; text-align: left; font-family: 'Verdana', sans-serif;">Data e hora do Almoço</th>
+        <th class="table-header" style="padding: 10px; text-align: left; font-family: 'Verdana', sans-serif;">Data e hora de Retorno</th>
+        <th class="table-header" style="padding: 10px; text-align: left; font-family: 'Verdana', sans-serif;">Data e hora de Saída</th>
+        <th class="table-header" style="padding: 10px; text-align: center;">Ações</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let registro of registros">
-        <td><input type="checkbox" [(ngModel)]="registro.selecionado"></td>
-        <td>{{ registro.nome }}</td>
-        <td>{{ registro.matricula }}</td>
-        <td>{{ registro.horarioChegada }}</td>
-        <td>{{ registro.horarioAlmoco }}</td>
-        <td>{{ registro.horarioRetorno }}</td>
-        <td>{{ registro.horarioSaida }}</td>
-        <td>
-          <button class="btn-justificativa" (click)="mostrarJustificativa(registro.id)">Excluir</button>
-          <button class="btn-editar" (click)="editarRegistro(registro.id)">Editar</button>
+      <tr *ngFor="let registro of registros" style="background-color: #ffffff; border-bottom: 1px solid #ddd;">
+        <td style="padding: 10px; text-align: center;">
+          <input type="checkbox" [(ngModel)]="registro.selecionado">
+        </td>
+        <td style="padding: 10px; text-align: left; color: #008000; font-family: 'Courier New', monospace;">{{ registro.nome }}</td>
+        <td style="padding: 10px; text-align: left; color: #008000; font-family: 'Courier New', monospace;">{{ registro.matricula }}</td>
+        <td style="padding: 10px; text-align: left; color: #00008B	; font-family: 'Courier New', monospace;">{{ registro.horarioChegada }}</td>
+        <td style="padding: 10px; text-align: left; color: #00008B	; font-family: 'Courier New', monospace;">{{ registro.horarioAlmoco }}</td>
+        <td style="padding: 10px; text-align: left; color: #00008B	; font-family: 'Courier New', monospace;">{{ registro.horarioRetorno }}</td>
+        <td style="padding: 10px; text-align: left; color: #00008B	; font-family: 'Courier New', monospace;">{{ registro.horarioSaida }}</td>
+        <td style="padding: 10px; text-align: center;">
+          <button class="btn-justificativa" style="background-color: #DC143C;  color: white; border: none; padding: 5px 10px; border-radius: 4px;" (click)="mostrarJustificativa(registro.id)">Excluir</button>
+          <button class="fa fa-pencil" style="background-color: #00008B; margin-left: 7px; color: white; border: none; padding: 5px 10px; border-radius: 4px;" (click)="editarRegistro(registro.id)">Editar</button>
         </td>
       </tr>
     </tbody>
   </table>
+
   <div *ngIf="mostrarModalJustificativa" class="modal">
     <div class="modal-content">
       <span class="close" (click)="fecharModalJustificativa()">&times;</span>
@@ -40,8 +43,8 @@
       <button class="btn-confirmar" (click)="confirmarExclusao()">Confirmar</button>
     </div>
   </div>
+
   <div *ngIf="sucesso" class="sucesso">
     <p>{{ sucesso }}</p>
   </div>
-  
 </div>

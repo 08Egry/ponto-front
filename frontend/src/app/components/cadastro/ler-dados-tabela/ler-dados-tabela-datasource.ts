@@ -8,7 +8,7 @@ import { Registro } from '../criar-cadastro/cadastro.model';
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: Registro[] = [
-  {id: 1, matricula: '',nome:'',chegadaRegistrada:'',almocoRegistrado:'',retornoRegistrada:'', saidaRegistrafa:''}
+  {id: 1, matricula: '',nome:'',chegadaRegistrada:'',almocoRegistrado:'',retornoRegistrada:'', saidaRegistrada:''}
 ];
 
 /**

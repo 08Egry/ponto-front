@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./criar-cadastro.component.css']
 })
 export class RegistroComponent implements OnInit {
+
+
   nome: string = '';
   matricula: string = '';
   sucesso?: string;
@@ -37,16 +39,16 @@ export class RegistroComponent implements OnInit {
   verificarRegistro(): void {
     this.registroService.verificarPontoRegistrado(this.nome).subscribe(
       response => {
-        if (response.chegadaRegistrada) {
+        if (response.horarioChegada) {
           this.currentStep = 'almoco';
         }
-        if (response.almocoRegistrado) {
+        if (response.horarioAlmoco) {
           this.currentStep = 'retorno';
         }
-        if (response.saidaRegistrafa) {
+        if (response.horarioRetorno) {
           this.currentStep = 'saida';
         }
-        if (response.chegadaRegistrada) {
+        if (response.horarioSaida) {
           this.currentStep = 'completo';
           this.sucesso = 'Todos os pontos já foram registrados.';
         }
@@ -149,18 +151,22 @@ export class RegistroComponent implements OnInit {
   }
 
   registrarChegada(): void {
+    const horarioChegada = new Date();
     this.registrarPonto('chegada');
   }
 
   registrarAlmoco(): void {
+    const horarioAlmoco = new Date();
     this.registrarPonto('almoco');
   }
 
   registrarRetorno(): void {
+    const horarioRetorno = new Date();
     this.registrarPonto('retorno');
   }
 
   registrarSaida(): void {
+    const horarioSaida = new Date();
     this.registrarPonto('saida');
   }
 
