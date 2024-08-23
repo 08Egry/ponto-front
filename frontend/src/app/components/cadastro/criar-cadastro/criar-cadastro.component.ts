@@ -1,4 +1,4 @@
-// criar-cadastro.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { RegistroService } from '../registro.service';
 import { Router } from '@angular/router';

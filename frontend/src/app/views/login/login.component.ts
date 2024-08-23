@@ -1,14 +1,15 @@
+import { UsuarioService } from './../../components/cadastro/Usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LoginService } from './../../components/cadastro/login.service';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent  {
   loginForm: FormGroup;
   error: string = '';
   perfil: any;
@@ -16,21 +17,19 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private loginService: LoginService
-  ) {
+    private UsuarioService: UsuarioService
+    ) {
     this.loginForm = this.formBuilder.group({
       nome: ['', Validators.required],
       senha: ['', Validators.required]
     });
   }
 
-  ngOnInit(): void {
-  }
 
   irParaApaginaEscolhida(): void {
     if (this.loginForm.valid) {
       const { nome, senha } = this.loginForm.value;
-      this.loginService.login(nome, senha).then(
+      this.UsuarioService.login(nome, senha).then(
         (response: any) => {
           const perfil = response.perfil; 
           this.direcionarPagina(perfil);

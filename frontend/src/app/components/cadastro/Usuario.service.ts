@@ -7,17 +7,18 @@ import { Usuario } from './criar-cadastro/cadastro.model';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService  {
+export class UsuarioService  {
   private apiUrl = 'http://localhost:8080';
 
   constructor(private http: HttpClient,
 ){ }
 
-  login(nome: string, password: string): Promise<Usuario |undefined> {
-    const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.getToken()}` });
-  
-    return this.http.post<Usuario>(`${this.apiUrl}/autenticacao/login`, {nome, password}, {headers}).toPromise();
-  }
+ login(nome: string, password: string) {
+  const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.getToken()}` });
+
+  return this.http.post<Usuario>(`${this.apiUrl}/autenticacao/login`, { nome, password }, { headers }).toPromise();
+}
+
   
 
 

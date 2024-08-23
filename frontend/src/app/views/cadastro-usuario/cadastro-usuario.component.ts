@@ -1,6 +1,7 @@
+import { UsuarioService } from './../../components/cadastro/Usuario.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from './../../components/cadastro/login.service';
+
 
 @Component({
   selector: 'app-cadastro-usuario',
@@ -15,10 +16,10 @@ export class CadastroUsuarioComponent {
   perfil: string = 'Usuario';
   sucesso?: string;
 
-  constructor(private loginService: LoginService, private router: Router) { }
+  constructor(private UsuarioService: UsuarioService, private router: Router) { }
 
   Usuario() {
-    this.loginService.criarUsuario(this.nome, this.matricula, this.email, this.senha, this.perfil).then(
+    this.UsuarioService.criarUsuario(this.nome, this.matricula, this.email, this.senha, this.perfil).then(
       () => {
         this.sucesso = `Cadastro realizado com sucesso`;
       },

@@ -17,7 +17,7 @@ export interface Registro {
     id: number;
     nome: string,
     matricula: number;
-    role: string;
+    tipo: string;
     token: string;
     email: string,
     senha: string,
@@ -26,5 +26,5 @@ export interface Registro {
 
   export interface Login{
     nome: string;
-    senha: string;
+    password: string;
   }

@@ -34,7 +34,9 @@ const routes: Routes = [
 {path:"cadastro/pagina-administrador",
   component: PaginaAdministradorComponent
 },
-{ path: 'editar-registro/:id', component: EditarRegistroComponent },
+{ path: 'editar-registro/:id', 
+  component: EditarRegistroComponent 
+},
 {
   path:'', redirectTo: '/login', pathMatch:'full'
 },
@@ -42,10 +44,10 @@ const routes: Routes = [
   path: "cadastro-usuario",
   component: CadastroUsuarioComponent
 },{
-  path:'**',redirectTo:'/cadastro-usuario',pathMatch:'full'
+  path:'**',redirectTo:'/ver-ponto',pathMatch:'full'
 },
 {
-  path:'**',redirectTo:'/cadastro-usuario',pathMatch:'full'
+  path:'**',redirectTo:'/ver-ponto',pathMatch:'full'
 },
 {
   path:"cadastro/ver-ponto",

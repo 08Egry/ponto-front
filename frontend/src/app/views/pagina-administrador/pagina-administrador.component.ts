@@ -13,7 +13,7 @@ export class PaginaAdministradorComponent implements OnInit {
   mostrarModalJustificativa: boolean = false;
   mostrarModalJustificativaEdicao: boolean = false;
   justificativas: string[] = ['Erro', 'Ausência', 'Outros'];
-  justiEdicao: string[] = ['com', 'mat', 'outros'];
+  justiEdicao: string[] = ['Erro', 'horario errado', 'outros'];
   justificativa: string = '';
   justificarEdicao: string = '';
   idRegistroParaExcluir: number | null = null;

@@ -1,5 +1,6 @@
+import { UsuarioService } from './../../components/cadastro/Usuario.service';
 import { Router } from '@angular/router';
-import { LoginService } from './../../components/cadastro/login.service';
+
 import { Component } from '@angular/core';
 
 @Component({
@@ -17,13 +18,13 @@ export class AlterarSenhaComponent {
   console: any;
 
   constructor(
-   private LoginService: LoginService,
+   private UsuarioService: UsuarioService,
    private router: Router
   ){}
 
 
 AlterarSenha(): void {
-  this.LoginService.AlterarSenha(this.usuario).subscribe(
+  this.UsuarioService.AlterarSenha(this.usuario).subscribe(
     ()=>{
       this.console.log('Dados alterados com sucesso!');
     }, 

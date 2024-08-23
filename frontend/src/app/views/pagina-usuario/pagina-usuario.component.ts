@@ -40,7 +40,7 @@ RegistrarPonto(): void {
 }
 
 verRegistro(): void {
-  this.router.navigate(['/ver-ponto']);
+  this.router.navigate(['cadastro/pagina-administrador']);
 }
 
 }
