@@ -25,4 +25,7 @@ export class VerPontoComponent {
     );
   }
 
+  Voltar(): void {
+    this.router.navigate(['/cadastro/pagina-usuario']);
+  }
 }

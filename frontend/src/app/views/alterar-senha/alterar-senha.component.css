@@ -1,0 +1,42 @@
+h1{
+    text-align: center;
+    color: #FF4500;
+    margin-bottom: 20px;
+}
+
+.form-group{
+    margin-bottom: 15px;
+}
+
+label{
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #FF4500; 
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da; /* Light grey */
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: #495057; /* Medium grey */
+    background-color: #fff; /* White */
+    transition: border-color 0.2s;
+  }
+
+  .custom-button {
+    display: block;         /* Torna o botão um elemento de bloco */
+    width: 100%;            /* Faz o botão ocupar toda a largura do seu contêiner */
+    padding: 10px;
+    margin-bottom: 10px;    /* Adiciona um espaço entre os botões */
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #fff; /* White text */
+    background-color: #FF4500; /* Blue background */
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }

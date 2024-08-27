@@ -1,6 +1,6 @@
 <div class="container">
-    <h1>Cadastro de Usuário</h1>
-    <form (ngSubmit)="AlterarSenha()" #cadastroForm="ngForm">
+    <h1>Alterar Senha</h1>
+    <form [formGroup]="alterarSenhaForm" (ngSubmit)="onSubmit()" #cadastroForm="ngForm">
       <div>
         <label for="matricula">Matricula</label>
         <input type="number" id="matricula" name="nome" required [(ngModel)]="matricula" class="form-control">
@@ -11,11 +11,29 @@
         <input type="email" id="email" name="email" required [(ngModel)]="email" class="form-control">
       </div>
       <div>
-        <label for="senha">Senha:</label>
-        <input type="password" id="senha" name="senha" required [(ngModel)]="senha" class="form-control" >
+        <label for="senhaAtual">Senha Atual</label>
+        <input id="senhaAtual" type="password" formControlName="senhaAtual" />
+        <div *ngIf="alterarSenhaForm.get('senhaAtual')?.invalid && alterarSenhaForm.get('senhaAtual')?.touched">
+          A senha atual é obrigatória.
+        </div>
       </div>
+    
+      <div>
+        <label for="novaSenha">Nova Senha</label>
+        <input id="novaSenha" type="password" formControlName="novaSenha" />
+        <div *ngIf="alterarSenhaForm.get('novaSenha')?.invalid && alterarSenhaForm.get('novaSenha')?.touched">
+          A nova senha é obrigatória e deve ter no mínimo 6 caracteres.
+        </div>
+      </div>
+      <div>
+        <label for="confirmarNovaSenha">Confirmar Nova Senha</label>
+        <input id="confirmarNovaSenha" type="password" formControlName="confirmarNovaSenha" />
+        <!-- <div *ngIf="alterarSenhaForm.errors?.notMatching && alterarSenhaForm.get('confirmarNovaSenha')?.touched"> -->
+         As senhas não coincidem.
+        </div>
+       <!-- </div>  -->
         <br><br>
-      <button type="submit" (click)="AlterarSenha()"  class="form-control">Alterar Senha</button>
+      <button type="submit" [disabled]="alterarSenhaForm.valid"  class="form-control">Alterar Senha</button>
       <br><br>
       <button type="submit" (click)="Voltar()"  class="form-control">Voltar</button>
       <div *ngIf="sucesso" class="sucesso">

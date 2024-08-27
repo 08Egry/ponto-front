@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Usuario } from './criar-cadastro/cadastro.model';
 
 
@@ -46,12 +46,25 @@ export class UsuarioService  {
     return !!this.getToken();
   }
 
-  getPerfilUsuario(): string {
-    return localStorage.getItem('tipo') || '';
+  getPerfilUsuario(): string | null {
+   return localStorage.getItem('perfil');
+
+    // if(token){
+    //   try{
+    //     const decodeToken: any = jwt_decode(token);
+    //     return decodeToken.perfil;
+    //   }catch(error){
+    //     console.error('erro ao decodificar', error)
+    //     return null;
+    //   }
+    // }
+    // return null;
   }
 
-  AlterarSenha(usuario:Usuario): Observable<Usuario>{
-    const headers = new HttpHeaders({'Autorization': `Bearen ${this.getToken()}`});
-    return this.http.put<Usuario>(`${this.apiUrl}autenticacao/atualizar-dados${usuario.matricula,usuario.email,usuario.senha}`,usuario);
+  AlterarSenha(id: number, novaSenha: string): Promise<any> {
+    const headers = { 'Authorization': `Bearer ${this.getToken()}` };
+    return this.http.put(`${this.apiUrl}/autenticacao/atualizar-dados${id}`, { novaSenha }, { headers }).toPromise();
   }
+  
 }
+

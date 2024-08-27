@@ -107,4 +107,9 @@ export class PaginaAdministradorComponent implements OnInit {
       alert('Por favor, selecione pelo menos um registro para excluir.');
     }
   }
+
+
+  Voltar(): void {
+    this.router.navigate(['/']);
+  }
 }

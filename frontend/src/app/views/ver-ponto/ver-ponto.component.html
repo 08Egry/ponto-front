@@ -1,25 +1,26 @@
 <div class="container">
-    <h2>Registros de Ponto</h2>
-    <table class="table table-striped">
+    <h2 style="color: #FF4500; margin-left: 10px; font-family: 'Arial', sans-serif;">Registros de Ponto</h2>
+    <table class="table table-striped" style="border-spacing: 14px; width: 100%;">
         <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Matricula</th>
-                <th>Horario de chegada</th>
-                <th>Horario de almoço</th>
-                <th>Horario de retorno</th>
-                <th>Horario de saída</th>
+            <tr style="background-color: #f8f8f8; color: #333;">
+                <th class="table-header" style="padding: 10px; text-align: center; font-family: 'Verdana', sans-serif;">Nome</th>
+                <th class="table-header" style="padding: 10px; text-align: left; font-family: 'Verdana', sans-serif;">Matricula</th>
+                <th class="table-header" style="padding: 10px; text-align: left; font-family: 'Verdana', sans-serif;">Horario de chegada</th>
+                <th class="table-header"  style="padding: 10px; text-align: left; font-family: 'Verdana', sans-serif;">Horario de almoço</th>
+                <th class="table-header" style="padding: 10px; text-align: left; font-family: 'Verdana', sans-serif;">Horario de retorno</th>
+                <th class="table-header" style="padding: 10px; text-align: left; font-family: 'Verdana', sans-serif;">Horario de saída</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let registro of registros">
-                <td>{{ registro.nome }}</td>
-                <td>{{ registro.matricula }}</td>
-                <td>{{ registro.horarioChegada }}</td>
-                <td>{{registro.horarioAlmoco}}</td>
-                <td>{{registro.horarioRetorno}}</td>
-                <td>{{registro.horarioSaida}}</td>
+                <td style="padding: 10px; text-align: left; color: #008000; font-family: 'Courier New', monospace;">{{ registro.nome }}</td>
+                <td style="padding: 10px; text-align: left; color: #008000; font-family: 'Courier New', monospace;">{{ registro.matricula }}</td>
+                <td style="padding: 10px; text-align: left; color: #00008B	; font-family: 'Courier New', monospace;">{{ registro.horarioChegada }}</td>
+                <td style="padding: 10px; text-align: left; color: #00008B	; font-family: 'Courier New', monospace;">{{registro.horarioAlmoco}}</td>
+                <td style="padding: 10px; text-align: left; color: #00008B	; font-family: 'Courier New', monospace;">{{registro.horarioRetorno}}</td>
+                <td style="padding: 10px; text-align: left; color: #00008B	; font-family: 'Courier New', monospace;">{{registro.horarioSaida}}</td>
             </tr>
         </tbody>
     </table>
+    <button (click)="Voltar()" color="primary" class="custom-button">Voltar</button>
 </div>

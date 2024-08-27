@@ -12,7 +12,8 @@ import { Usuario } from 'src/app/components/cadastro/criar-cadastro/cadastro.mod
 export class HomeComponent implements OnInit {
   loginForm: FormGroup;
   error: string = '';
-  tipo: string='';
+
+
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,14 +30,15 @@ export class HomeComponent implements OnInit {
 
   entrar() {
     this.UsuarioService.login(this.loginForm.value.nome, this.loginForm.value.senha).then(
-      (response: Usuario | undefined ) => {
-        if (response ) {
-          localStorage.setItem('token', response.token);
+      (response: Usuario | undefined) => {
+        if (response) {
+          localStorage.setItem('perfil', response.perfil);
+
           const role = this.UsuarioService.getPerfilUsuario();
   
-          if (this.tipo === 'admin') {
+          if (role === 'Administrador') {
             this.router.navigate(['/cadastro/pagina-administrador']);
-          } else if (this.tipo === 'usuario') {
+          } else if (role === 'Usuario') {
             this.router.navigate(['/cadastro/pagina-usuario']);
           } else {
             this.error = 'Perfil não reconhecido.';
@@ -52,13 +54,12 @@ export class HomeComponent implements OnInit {
       this.error = 'Erro inesperado. Tente novamente mais tarde.';
     });
   }
-
-
+  
   criarUsuario(): void {
     this.router.navigate(['/cadastro-usuario']);
   }
 
   alterarSenha(): void {
-    this.router.navigate(['/cadastro/alterar-senha']);
+    this.router.navigate(['/alterar-senha']);
   }
 }

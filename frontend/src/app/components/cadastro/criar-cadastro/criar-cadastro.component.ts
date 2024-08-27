@@ -171,6 +171,6 @@ export class RegistroComponent implements OnInit {
   }
 
   Voltar(): void {
-    this.router.navigate(['/cadastro']);
+    this.router.navigate(['/cadastro/pagina-usuario']);
   }
 }

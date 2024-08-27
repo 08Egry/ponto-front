@@ -34,6 +34,9 @@ const routes: Routes = [
 {path:"cadastro/pagina-administrador",
   component: PaginaAdministradorComponent
 },
+{path:"cadastro/ver-ponto",
+  component: VerPontoComponent
+},
 { path: 'editar-registro/:id', 
   component: EditarRegistroComponent 
 },
@@ -43,7 +46,12 @@ const routes: Routes = [
 {
   path: "cadastro-usuario",
   component: CadastroUsuarioComponent
-},{
+},
+{
+  path:"alterar-senha",
+  component: AlterarSenhaComponent
+},
+{
   path:'**',redirectTo:'/ver-ponto',pathMatch:'full'
 },
 {

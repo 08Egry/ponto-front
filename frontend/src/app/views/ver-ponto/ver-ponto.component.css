@@ -1,0 +1,15 @@
+.table-header {
+    background-color:  #FF4500;;
+    color: white;
+    border: 1px solid  #FF4500;;
+    padding: 8px;
+    text-align: left;
+  }
+  .h2{
+    justify-items: center;
+    color:#FF4500
+  }
+
+.custom-button{
+  background-color: #FF4500;
+}

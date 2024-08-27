@@ -18,9 +18,9 @@ export interface Registro {
     nome: string,
     matricula: number;
     tipo: string;
-    token: string;
     email: string,
     senha: string,
+    NovaSenha: string;
     perfil: string;
   }
 

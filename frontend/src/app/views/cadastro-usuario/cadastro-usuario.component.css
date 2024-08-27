@@ -26,7 +26,7 @@
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    color: #FF4500; /* Medium grey */
+    color: #FF4500; 
 
   }
   
@@ -45,9 +45,9 @@
   
   .form-control:focus {
     border-color: #80bdff; /* Blue */
-    outline: none;
+   outline: none;
     box-shadow: 0 0 5px rgba(128, 189, 255, 0.5);
-  }
+  } 
   
   /* Estilo dos botões */
   .custom-button {

@@ -36,6 +36,6 @@ export class CadastroProdutoComponent implements OnInit {
   }
 
   registro(): void{
-    this.router.navigate(['cadastro/pagina-administrador']);
+    this.router.navigate(['cadastro/ver-ponto']);
   }
 }
