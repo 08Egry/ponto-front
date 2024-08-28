@@ -33,6 +33,8 @@ export class HomeComponent implements OnInit {
       (response: Usuario | undefined) => {
         if (response) {
           localStorage.setItem('perfil', response.perfil);
+          localStorage.setItem('nome', response.nome);
+          localStorage.setItem('matricula', response.matricula);
 
           const role = this.UsuarioService.getPerfilUsuario();
   

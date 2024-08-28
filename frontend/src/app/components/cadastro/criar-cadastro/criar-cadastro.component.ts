@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { RegistroService } from '../registro.service';
 import { Router } from '@angular/router';
@@ -33,7 +32,12 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit(): void {
     this.nome = localStorage.getItem('nome') || '';
-    this.verificarRegistro();
+    this.matricula = localStorage.getItem('matricula') ||'';
+    if(!this.nome || !this.matricula){
+      this.router.navigate(['/'])
+    }else {
+      this.verificarRegistro();
+    }
   }
 
   verificarRegistro(): void {

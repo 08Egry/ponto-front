@@ -16,7 +16,7 @@ export interface Registro {
   export interface Usuario {
     id: number;
     nome: string,
-    matricula: number;
+    matricula: string;
     tipo: string;
     email: string,
     senha: string,

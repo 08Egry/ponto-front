@@ -1,15 +1,15 @@
-<!-- criar-cadastro.component.html -->
+
 <div class="container">
-    <h2>Registrar de Ponto</h2>
-    <div class="form-group">
-      <label for="nome">Nome:</label>
-      <input id="nome" type="text" [(ngModel)]="nome" class="form-control">
-    </div>
-    <div class="form-group">
-      <label for="matricula">Matricula:</label>
-      <input id="matricula" type="text" [(ngModel)]="matricula" class="form-control">
-    </div>
+  <h2>Registrar de Ponto</h2>
+  <div class="form-group">
+    <label for="nome">Nome:</label>
+    <input id="nome" type="text" [(ngModel)]="nome" class="form-control" readonly>
   </div>
+  <div class="form-group">
+    <label for="matricula">Matricula:</label>
+    <input id="matricula" type="text" [(ngModel)]="matricula" class="form-control" readonly>
+  </div>
+  
   <div class="button-group">
     <button *ngIf="currentStep === 'chegada'" mat-raised-button (click)="registrarChegada()" color="primary" class="custom-button">
       Registrar Chegada
@@ -28,4 +28,4 @@
   <div *ngIf="sucesso" class="sucesso">
     <p>{{ sucesso }}</p>
   </div>
-  
+</div>
