@@ -109,7 +109,7 @@ export class PaginaAdministradorComponent implements OnInit {
   }
 
 
-  Voltar(): void {
-    this.router.navigate(['/']);
+  RegistrarPonto(): void {
+    this.router.navigate(['/cadastro/pagina-usuario']);
   }
 }
