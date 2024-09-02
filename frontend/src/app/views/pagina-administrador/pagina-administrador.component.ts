@@ -112,4 +112,8 @@ export class PaginaAdministradorComponent implements OnInit {
   RegistrarPonto(): void {
     this.router.navigate(['/cadastro/pagina-usuario']);
   }
+
+  Sair():void{
+    this.router.navigate(['/'])
+  }
 }

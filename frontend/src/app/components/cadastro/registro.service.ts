@@ -52,8 +52,14 @@ export class RegistroService {
   }
 
   atualizarRegistro(registro: any, id: any): Promise<Registro | undefined> {
-    return this.http.put<any>(`${this.apiUrl}/funcionario/atualizar-dados/${id}`, registro).toPromise();
+    return this.http.put<Registro>(`${this.apiUrl}/funcionario/atualizar-dados/${id}`, registro)
+      .toPromise()
+      .catch((error) => {
+        console.error('Erro ao atualizar o registro:', error);
+        return undefined;
+      });
   }
+  
 
   verRegistro(): Observable<any> {
     const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.getToken()}` });

@@ -1,7 +1,6 @@
 import { Registro } from './../components/cadastro/criar-cadastro/cadastro.model';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
 import { RegistroService } from 'src/app/components/cadastro/registro.service';
 
 @Component({
@@ -10,8 +9,22 @@ import { RegistroService } from 'src/app/components/cadastro/registro.service';
   styleUrls: ['./editar-registro.component.css']
 })
 export class EditarRegistroComponent implements OnInit {
-  registro: any;
-  sucesso: any;
+  registro: Registro = {
+    nome: '',
+    matricula: '',
+    horarioChegada: '',
+    horarioAlmoco: '',
+    horarioRetorno: '',
+    horarioSaida: '',
+    id: 0,
+    perfil: '',
+    saidaRegistrada: '',
+    retornoRegistrada: '',
+    almocoRegistrado: '',
+    chegadaRegistrada: ''
+  };
+
+  sucesso: string | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,26 +47,26 @@ export class EditarRegistroComponent implements OnInit {
   }
 
   salvarEdicao(): void {
-    this.registroService.atualizarRegistro(this.registro, this.id).then(
-      () => {
-        this.router.navigate(['cadastro/pagina-administrador']);
-        this.sucesso = 'Dados atualizados com sucesso';
-      },
-      (error: any) => {
-        console.error('Erro ao salvar edição:', error);
+    if (this.registro) {
+      const id = this.route.snapshot.paramMap.get('id');
+      if (id) {
+        this.registroService.atualizarRegistro(this.registro, +id).then(
+          (result) => {
+            if (result) {
+              this.sucesso = 'Dados atualizados com sucesso';
+              this.router.navigate(['cadastro/pagina-administrador']);
+            } else {
+              console.error('Erro ao atualizar o registro');
+            }
+          },
+          (error: any) => {
+            console.error('Erro ao salvar edição:', error);
+          }
+        );
+      } else {
+        console.error('ID do registro não encontrado');
       }
-    );
-  }
-
-  id(_registro: any, _id: any): void {
-    this.registroService.atualizarRegistro(_registro, _id).then(
-      () => {
-        console.log('Registro atualizado com sucesso');
-      },
-      (error: any) => {
-        console.error('Erro ao atualizar registro:', error);
-      }
-    );
+    }
   }
 
   cancelar(): void {

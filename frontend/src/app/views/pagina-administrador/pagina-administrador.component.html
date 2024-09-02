@@ -43,7 +43,20 @@
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s, box-shadow 0.3s;" (click)="RegistrarPonto()">  Ir para a página de registrar ponto</button>
+    transition: background-color 0.3s, box-shadow 0.3s;" (click)="RegistrarPonto()">Ir para a página de registrar ponto</button>
+
+
+    <button
+      style="
+        margin-left:20px;
+        background-color:#DC143C;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s " (click)="Sair()">Sair</button>
 
   <div *ngIf="mostrarModalJustificativa" class="modal">
     <div class="modal-content">

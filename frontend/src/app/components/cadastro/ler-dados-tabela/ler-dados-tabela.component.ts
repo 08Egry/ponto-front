@@ -18,7 +18,7 @@ export class LerDadosTabelaComponent implements AfterViewInit {
   dataSource = new LerDadosTabelaDataSource();
 
   horarioEntrada:string='';
-  displayedColumns = ['id', 'matricula','nome','horarioChegada','horarioAlmoco','horarioRetorno','horarioSaida'];
+  displayedColumns = ['id','perfil', 'matricula','nome','horarioChegada','horarioAlmoco','horarioRetorno','horarioSaida'];
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;

@@ -10,6 +10,7 @@ import { RegistroService } from 'src/app/components/cadastro/registro.service';
 })
 export class VerPontoComponent {
   registros: Registro[] = [];
+  
 
   constructor(private router: Router, private registroService: RegistroService) {}
 
@@ -17,7 +18,7 @@ export class VerPontoComponent {
   ngOnInit(): void {
     this.registroService.getRegistros().subscribe(
       (data: Registro[]) => {
-        this.registros = data;
+        this.registros = data.filter(registro => registro.matricula);
       },
       (error: any) => {
         console.error('Erro ao buscar registros:', error);
