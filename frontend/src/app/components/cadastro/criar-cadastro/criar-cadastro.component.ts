@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 })
 export class RegistroComponent implements OnInit {
 
-
   nome: string = '';
   matricula: string = '';
   sucesso?: string;
@@ -32,10 +31,11 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit(): void {
     this.nome = localStorage.getItem('nome') || '';
-    this.matricula = localStorage.getItem('matricula') ||'';
+    this.matricula = localStorage.getItem('matricula') || '';
+    
     if(!this.nome || !this.matricula){
-      this.router.navigate(['/'])
-    }else {
+      this.router.navigate(['/']);
+    } else {
       this.verificarRegistro();
     }
   }
@@ -45,16 +45,20 @@ export class RegistroComponent implements OnInit {
       response => {
         if (response.horarioChegada) {
           this.currentStep = 'almoco';
+          localStorage.setItem('currentStep', this.currentStep);
         }
         if (response.horarioAlmoco) {
           this.currentStep = 'retorno';
+          localStorage.setItem('currentStep', this.currentStep);
         }
         if (response.horarioRetorno) {
           this.currentStep = 'saida';
+          localStorage.setItem('currentStep', this.currentStep);
         }
         if (response.horarioSaida) {
           this.currentStep = 'completo';
           this.sucesso = 'Todos os pontos já foram registrados.';
+          localStorage.setItem('currentStep', this.currentStep);
         }
       },
       error => {
@@ -74,8 +78,8 @@ export class RegistroComponent implements OnInit {
             userLatitude, userLongitude
           );
 
-          if (distancia >= this.raioMaximo) {
-            this.registroService.registrarPonto(this.nome,this.matricula).subscribe(
+          if (distancia >= this.raioMaximo) { // Verifica se está dentro do raio máximo permitido
+            this.registroService.registrarPonto(this.nome, this.matricula).subscribe(
               response => {
                 switch (tipo) {
                   case 'chegada':
@@ -116,7 +120,6 @@ export class RegistroComponent implements OnInit {
     this.currentStep = ''; // Oculta o botão atual
 
     let nextStep = '';
-    let delay = 0;
 
     switch (tipo) {
       case 'chegada':
@@ -133,9 +136,13 @@ export class RegistroComponent implements OnInit {
         break;
     }
 
+    // Salva o próximo passo no localStorage para persistir após a atualização da página
+    localStorage.setItem('currentStep', nextStep);
+
+    // Exibe o próximo botão após um curto delay
     setTimeout(() => {
       this.currentStep = nextStep;
-    }, delay);
+    }, 5 * 1000); // Exemplo de delay de 5 segundos
   }
 
   calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {

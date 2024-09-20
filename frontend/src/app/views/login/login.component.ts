@@ -26,21 +26,21 @@ export class LoginComponent  {
   }
 
 
-  irParaApaginaEscolhida(): void {
-    if (this.loginForm.valid) {
-      const { nome, senha } = this.loginForm.value;
-      this.UsuarioService.login(nome, senha).then(
-        (response: any) => {
-          const perfil = response.perfil; 
-          this.direcionarPagina(perfil);
-        },
-        (error) => {
-          this.error = 'Falha ao executar login';
-          console.error(error); 
-        }
-      );
-    }
-  }
+  // irParaApaginaEscolhida(): void {
+  //   if (this.loginForm.valid) {
+  //     const { nome, senha } = this.loginForm.value;
+  //     this.UsuarioService.login(nome, senha).then(
+  //       (response: any) => {
+  //         const perfil = response.perfil; 
+  //         this.direcionarPagina(perfil);
+  //       },
+  //       (error) => {
+  //         this.error = 'Falha ao executar login';
+  //         console.error(error); 
+  //       }
+  //     );
+  //   }
+  // }
 
   direcionarPagina(perfil: string): void {
     switch (perfil) {

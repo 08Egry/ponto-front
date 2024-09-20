@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Usuario } from './criar-cadastro/cadastro.model';
+import { IUsuario, Usuario } from './criar-cadastro/cadastro.model';
+
 
 
 @Injectable({
@@ -13,16 +14,24 @@ export class UsuarioService  {
   constructor(private http: HttpClient,
 ){ }
 
- login(nome: string, password: string) {
+
+login(usuario: IUsuario): Promise<IUsuario | undefined> {
   const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.getToken()}` });
 
-  return this.http.post<Usuario>(`${this.apiUrl}/autenticacao/login`, { nome, password }, { headers }).toPromise();
+  return this.http.post<IUsuario>(`${this.apiUrl}/autenticacao/login`, usuario, { headers })
+    .toPromise().then(response => {
+      if (response) {
+        return response;  
+      }
+      return undefined; 
+    })
+    .catch(error => {
+      console.error('Erro ao fazer login', error);
+      return undefined; 
+    });
 }
 
-  
-
-
-  logout(): void {
+logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
     localStorage.removeItem('nome');
@@ -49,16 +58,6 @@ export class UsuarioService  {
   getPerfilUsuario(): string | null {
    return localStorage.getItem('perfil');
 
-    // if(token){
-    //   try{
-    //     const decodeToken: any = jwt_decode(token);
-    //     return decodeToken.perfil;
-    //   }catch(error){
-    //     console.error('erro ao decodificar', error)
-    //     return null;
-    //   }
-    // }
-    // return null;
   }
 
   AlterarSenha(id: number, novaSenha: string): Promise<any> {

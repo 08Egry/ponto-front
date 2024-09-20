@@ -15,6 +15,8 @@ export interface Registro {
   }
   
   export interface Usuario {
+    sucesso: Usuario | undefined;
+    logado: boolean;
     id: number;
     nome: string,
     matricula:  string;
@@ -25,10 +27,14 @@ export interface Registro {
     perfil: string;
   }
 
-  export interface Login{
+  export interface IUsuario {
+    id: number;
     nome: string;
     password: string;
+    perfil: string;  // Adicionei o perfil
+    logado: boolean;
   }
+  
 
   // export interface PontoRegistrado{
   //   id: number;

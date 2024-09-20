@@ -1,3 +1,4 @@
+import { CinbesaLibModule } from 'cinbesa-lib';
 
 
 import { MatButtonModule } from '@angular/material/button';
@@ -63,7 +64,8 @@ import { EditarRegistroComponent } from './editar-registro/editar-registro.compo
     CadastroUsuarioComponent,
     VerPontoComponent,
     AlterarSenhaComponent,
-    EditarRegistroComponent
+    EditarRegistroComponent,
+
 
   ],
   imports: [
@@ -83,7 +85,8 @@ import { EditarRegistroComponent } from './editar-registro/editar-registro.compo
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CinbesaLibModule
   ],
   providers: [],
   bootstrap: [AppComponent]

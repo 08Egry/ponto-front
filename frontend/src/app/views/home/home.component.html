@@ -4,23 +4,24 @@
 </mat-card>
 
 <div class="container">
+  <div class="container">
   <h2>Login</h2>
-  <form [formGroup]="loginForm" (ngSubmit)="entrar()">
+  <form [formGroup]="formLogin" (ngSubmit)="entrar()">
     <div>
       <label for="nome">Nome:</label>
       <input id="nome" formControlName="nome" type="text" class="form-control">
-      <div *ngIf="loginForm.get('nome')?.invalid && loginForm.get('nome')?.touched" class="text-danger">
+      <div *ngIf="formLogin.get('nome')?.invalid && formLogin.get('nome')?.touched" class="text-danger">
         Nome é obrigatório.
       </div>
     </div>
     <div>
       <label for="senha">Senha:</label>
       <input id="senha" formControlName="senha" type="password" class="form-control">
-      <div *ngIf="loginForm.get('senha')?.invalid && loginForm.get('senha')?.touched" class="text-danger">
+      <div *ngIf="formLogin.get('senha')?.invalid && formLogin.get('senha')?.touched" class="text-danger">
         Senha é obrigatória.
       </div>
     </div>
-    <button type="submit" (click)="entrar()" [disabled]="loginForm.invalid" class="form-control">Login</button>
+    <button type="submit" (click)="entrar()" [disabled]="formLogin.invalid" class="form-control">Login</button>
     <br><br>
     <button type="button" (click)="criarUsuario()" class="form-control">Criar usuário</button>
     <br><br>
@@ -28,5 +29,8 @@
     <div *ngIf="error" class="error-message">
       {{ error }}
     </div>
+    
   </form>
+  </div>
 </div>
+
